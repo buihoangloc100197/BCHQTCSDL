@@ -1,0 +1,662 @@
+<!DOCTYPE html> <!-- Khai báo kiểu tài liệu là HTML5 để trình duyệt hiểu và hiển thị đúng -->
+<html lang="vi"> <!-- Thiết lập ngôn ngữ trang web là tiếng Việt để tối ưu SEO và hỗ trợ trình đọc màn hình -->
+
+<head> <!-- Phần đầu chứa thông tin cấu hình và tài nguyên của trang web -->
+    <meta charset="UTF-8"> <!-- Thiết lập bảng mã UTF-8 để hiển thị chính xác các ký tự tiếng Việt -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Giúp trang web hiển thị đúng tỷ lệ trên các thiết bị khác nhau (mobile, tablet) -->
+    <title>ZORENB | Thời Trân Cao Cấp & Editorial</title> <!-- Tiêu đề hiển thị trên tab của trình duyệt -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Kết nối tệp CSS bên ngoài để tạo kiểu dáng cho trang -->
+</head> <!-- Kết thúc phần cấu hình đầu trang -->
+
+<body class="collections-page">
+    <!-- Thêm class collections-page để kích hoạt layout có Sidebar bên trong Main từ CSS -->
+
+    <div class="app-container"> <!-- Thẻ bao bọc chính để thiết lập bố cục Grid tổng thể cho toàn trang -->
+
+        <!-- HEADER: Chứa Logo, Menu điều hướng và các nút Đăng nhập/Đăng ký -->
+        <header class="site-header"> <!-- Thành phần đầu trang dùng để chứa logo và các liên kết điều hướng -->
+            <div class="logo">ZORENB</div> <!-- Hiển thị tên thương hiệu, điểm nhấn nhận diện chính -->
+
+            <nav> <!-- Thẻ bao bọc các liên kết điều hướng để hỗ trợ cấu trúc ngữ nghĩa -->
+                <ul class="nav-menu" id="nav-menu"> <!-- Danh sách các mục thực đơn chính của trang web -->
+                    <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                    <!-- Liên kết quay về Trang Chủ mới tạo -->
+                    <li class="has-dropdown"> <!-- Mục thực đơn "Bộ Sưu Tập" có chứa các danh mục con (Dropdown) -->
+                        <a href="#" class="nav-link">Bộ Sưu Tập</a> <!-- Liên kết chính dẫn đến trang bộ sưu tập -->
+                        <ul class="sub-menu">
+                            <!-- Danh sách các mục con của bộ sưu tập, ẩn mặc định và hiện khi di chuột -->
+                            <li><a href="#" class="sub-link">Mới Nhất</a></li> <!-- Mục con: Các thiết kế vừa ra mắt -->
+                            <li><a href="#" class="sub-link">Mùa Hè</a></li>
+                            <!-- Mục con: Thời trang dành cho mùa nắng -->
+                            <li><a href="#" class="sub-link">Mùa Xuân</a></li>
+                            <!-- Mục con: Thời trang dành cho mùa lễ hội và tươi mới -->
+                            <li><a href="#" class="sub-link">Mùa Đông</a></li>
+                            <!-- Mục con: Thời trang giữ ấm và sang trọng cho mùa lạnh -->
+                        </ul> <!-- Kết thúc danh sách trình đơn con -->
+                    </li> <!-- Kết thúc mục "Bộ Sưu Tập" -->
+                    <li><a href="#" class="nav-link">Nam</a></li> <!-- Mục điều hướng cho danh mục thời trang nam -->
+                    <li><a href="#" class="nav-link">Nữ</a></li> <!-- Mục điều hướng cho danh mục thời trang nữ -->
+                    <li><a href="#" class="nav-link">Phụ Kiện</a></li>
+                    <!-- Mục điều hướng cho các sản phẩm trang sức, túi xách -->
+                    <li><a href="#" class="nav-link">Support Phong Cách</a></li>
+                    <!-- Dịch vụ tư vấn phong cách cho khách hàng -->
+                    <li><a href="#" class="nav-link">Liên Hệ</a></li> <!-- Liên kết dẫn tới thông tin liên hệ -->
+                    <!-- Các mục điều hướng dành riêng cho mobile được thêm vào list này để dễ quản lý -->
+
+                </ul> <!-- Kết thúc danh sách menu -->
+            </nav> <!-- Kết thúc vùng điều hướng -->
+
+            <div class="header-actions"> <!-- Chứa các nút chức năng phụ như đăng nhập/đăng ký ở bản desktop -->
+                <a href="#" class="btn-auth login-link">Đăng Nhập</a> <!-- Nút đăng nhập với kiểu dáng sang trọng -->
+                <a href="#" class="btn-auth register-btn">Đăng Ký</a> <!-- Nút đăng ký với kiểu dáng nổi bật -->
+            </div> <!-- Kết thúc vùng chức năng phụ -->
+
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                <!-- Nút 3 gạch để mở menu trên thiết bị di động -->
+                <span></span> <!-- Thanh ngang 1 của biểu tượng hamburger -->
+                <span></span> <!-- Thanh ngang 2 của biểu tượng hamburger -->
+                <span></span> <!-- Thanh ngang 3 của biểu tượng hamburger -->
+            </button> <!-- Kết thúc nút hamburger -->
+        </header> <!-- Kết thúc phần site-header -->
+
+        <!-- HERO SECTION: Băng chuyền ảnh Cinematic -->
+        <section class="image-hero" id="hero-slider">
+            <div class="hero-overlay"></div>
+
+            <!-- Tập hợp các khung hình Slide, bọc trong Dải Phù Bảng (Track) -->
+            <div class="hero-slides-container">
+                <div class="hero-track" id="hero-track">
+                    <div class="hero-slide">
+                        <img src="image/zorenb/hero.jpg" alt="ZORENB Heritage 1" class="hero-bg">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="image/louis_vuitton/product_01.jpg" alt="Luxury Heritage 2" class="hero-bg">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="image/chanel/product_01.jpg" alt="Luxury Heritage 3" class="hero-bg">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="image/dior/product_01.jpg" alt="Luxury Heritage 4" class="hero-bg">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="image/dior/product_02.jpg" alt="Luxury Heritage 5" class="hero-bg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Các nút điều hướng Trái/Phải (</>) -->
+            <button class="hero-nav-btn prev-btn" id="hero-prev" aria-label="Previous Slide">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="hero-nav-btn next-btn" id="hero-next" aria-label="Next Slide">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Nội dung chữ thay đổi theo từng slide -->
+            <div class="hero-content" id="hero-content">
+                <h1 class="hero-brand" id="hero-brand">ZORENB</h1>
+                <h3 class="hero-slogan-main" id="hero-slogan-main"></h3>
+                <p class="hero-slogan-sub" id="hero-slogan-sub"></p>
+            </div>
+        </section>
+
+        <!-- MAIN LAYOUT: Chứa Sidebar Filter và Product Grid -->
+        <main class="site-main section-container"> <!-- Vùng nội dung chính của trang web -->
+            <div class="main-with-sidebar"> <!-- Layout chia làm 2 cột: Sidebar và Danh sách sản phẩm -->
+
+                <!-- SIDEBAR: Hệ thống lọc sản phẩm cao cấp -->
+                <aside class="sidebar"> <!-- Thanh bên chứa các chức năng lọc và tìm kiếm -->
+
+                    <!-- Lọc theo Thương hiệu (Brands) -->
+                    <div class="filter-group">
+                        <h4 class="filter-title">Thương Hiệu</h4> <!-- Tiêu đề nhóm lọc -->
+                        <ul class="filter-list">
+                            <li class="filter-item"><a href="#" class="filter-link active">Tất Cả</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Saint Laurent</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Christian Dior</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Chanel</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Louis Vuitton</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Prada</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Gucci</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Lọc theo Loại sản phẩm (Category) -->
+                    <div class="filter-group">
+                        <h4 class="filter-title">Danh Mục</h4>
+                        <ul class="filter-list">
+                            <li class="filter-item"><a href="#" class="filter-link">Áo Khoác Heritage</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Váy Lụa Atelier</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Giày Nam Bespoke</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Túi Xách Di Sản</a></li>
+                            <li class="filter-item"><a href="#" class="filter-link">Đồng Hồ Đẳng Cấp</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Lọc theo Khoảng giá (Price Slider) -->
+                    <div class="filter-group">
+                        <h4 class="filter-title">Khoảng Giá</h4>
+                        <div class="price-slider-container">
+                            <div class="range-slider">
+                                <div class="slider-track" id="slider-track"></div>
+                                <input type="range" min="0" max="150000" value="0" class="slider-input" id="slider-min">
+                                <input type="range" min="0" max="150000" value="150000" class="slider-input"
+                                    id="slider-max">
+                            </div>
+                            <div class="price-inputs">
+                                <div class="price-box">
+                                    <label>Từ</label>
+                                    <input type="number" id="input-min" value="0">
+                                </div>
+                                <div class="price-box">
+                                    <label>Đến</label>
+                                    <input type="number" id="input-max" value="150000">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- PRODUCT GRID: Danh sách sản phẩm -->
+                <div class="product-listing"> <!-- Vùng hiển thị danh sách các thẻ sản phẩm -->
+                    <div class="masterpiece-grid" id="main-product-grid">
+                        <!-- Tái sử dụng grid từ trang chủ để đảm bảo tính nhất quán -->
+                        <!-- === MÙA XUÂN (SPRING COLLECTION) === -->
+                        <div class="masterpiece-item" data-brand="DIOR" data-origin="Paris, France"
+                            data-material="Lụa Tơ Tằm Thượng Hạng" data-designer="Maria Grazia Chiuri" data-year="2024">
+                            <button class="cart-floating-btn" title="Thêm vào giỏ hàng"><i
+                                    class="fas fa-shopping-cart"></i></button>
+                            <div class="masterpiece-img placeholder-hash">#</div>
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Spring Atelier Gown</h4>
+                                <p class="item-price">$3,800.00</p>
+                                <!-- ROW ACTIONS: Xem & Mua -->
+                                <div class="item-actions">
+                                    <a href="#" class="action-btn view-details"
+                                        onclick="openProductDetail(this); return false;">Chi Tiết</a>
+                                    <button class="action-btn add-to-cart">Đặt Mua</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="masterpiece-item" data-brand="CHANEL" data-origin="Paris, France"
+                            data-material="Sợi Tweed Cổ Điển" data-designer="Virginie Viard" data-year="2024">
+                            <button class="cart-floating-btn" title="Thêm vào giỏ hàng"><i
+                                    class="fas fa-shopping-cart"></i></button>
+                            <div class="masterpiece-img placeholder-hash">#</div>
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Spring Tweed Blossom</h4>
+                                <p class="item-price">$7,200.00</p>
+                                <!-- ROW ACTIONS: Xem & Mua -->
+                                <div class="item-actions">
+                                    <a href="#" class="action-btn view-details"
+                                        onclick="openProductDetail(this); return false;">Chi Tiết</a>
+                                    <button class="action-btn add-to-cart">Đặt Mua</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- === MÙA HÈ (SUMMER COLLECTION) === -->
+                        <div class="masterpiece-item" data-brand="ZORENB" data-origin="Milan, Italy"
+                            data-material="Chiffon Mỏng Nhẹ" data-designer="ZORENB Atelier" data-year="2024">
+                            <button class="cart-floating-btn" title="Thêm vào giỏ hàng"><i
+                                    class="fas fa-shopping-cart"></i></button>
+                            <div class="masterpiece-img placeholder-hash">#</div>
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Summer Resort Gown</h4>
+                                <p class="item-price">$4,100.00</p>
+                                <!-- ROW ACTIONS: Xem & Mua -->
+                                <div class="item-actions">
+                                    <a href="#" class="action-btn view-details"
+                                        onclick="openProductDetail(this); return false;">Chi Tiết</a>
+                                    <button class="action-btn add-to-cart">Đặt Mua</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="masterpiece-item" data-brand="CHANEL" data-origin="Cannes, France"
+                            data-material="Linen 100% Tự Nhiên" data-designer="Virginie Viard" data-year="2023">
+                            <button class="cart-floating-btn" title="Thêm vào giỏ hàng"><i
+                                    class="fas fa-shopping-cart"></i></button>
+                            <div class="masterpiece-img placeholder-hash">#</div>
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Summer Linen Breeze</h4>
+                                <p class="item-price">$2,950.00</p>
+                                <!-- ROW ACTIONS: Xem & Mua -->
+                                <div class="item-actions">
+                                    <a href="#" class="action-btn view-details"
+                                        onclick="openProductDetail(this); return false;">Chi Tiết</a>
+                                    <button class="action-btn add-to-cart">Đặt Mua</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- === MÙA THU (AUTUMN COLLECTION) === -->
+                        <div class="masterpiece-item" data-brand="DIOR" data-origin="London, UK"
+                            data-material="Vải Cashmere Kháng Nước" data-designer="Kim Jones" data-year="2023">
+                            <button class="cart-floating-btn" title="Thêm vào giỏ hàng"><i
+                                    class="fas fa-shopping-cart"></i></button>
+                            <div class="masterpiece-img placeholder-hash">#</div>
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Autumn Heritage Coat</h4>
+                                <p class="item-price">$5,200.00</p>
+                                <!-- ROW ACTIONS: Xem & Mua -->
+                                <div class="item-actions">
+                                    <a href="#" class="action-btn view-details"
+                                        onclick="openProductDetail(this); return false;">Chi Tiết</a>
+                                    <button class="action-btn add-to-cart">Đặt Mua</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="masterpiece-item" data-brand="ZORENB" data-origin="Tokyo, Japan"
+                            data-material="Lụa Satin Đen" data-designer="ZORENB Atelier" data-year="2024">
+                            <button class="cart-floating-btn" title="Thêm vào giỏ hàng"><i
+                                    class="fas fa-shopping-cart"></i></button>
+                            <div class="masterpiece-img placeholder-hash">#</div>
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Autumn Silk Evening</h4>
+                                <p class="item-price">$5,800.00</p>
+                                <!-- ROW ACTIONS: Xem & Mua -->
+                                <div class="item-actions">
+                                    <a href="#" class="action-btn view-details"
+                                        onclick="openProductDetail(this); return false;">Chi Tiết</a>
+                                    <button class="action-btn add-to-cart">Đặt Mua</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- === MÙA ĐÔNG (WINTER COLLECTION) === -->
+                        <div class="masterpiece-item" data-brand="SAINT LAURENT" data-origin="Paris, France"
+                            data-material="Len Pha Kim Tuyến" data-designer="Anthony Vaccarello" data-year="2024">
+                            <button class="cart-floating-btn" title="Thêm vào giỏ hàng"><i
+                                    class="fas fa-shopping-cart"></i></button>
+                            <div class="masterpiece-img placeholder-hash">#</div>
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Winter Obsidian Suit</h4>
+                                <p class="item-price">$4,500.00</p>
+                                <!-- ROW ACTIONS: Xem & Mua -->
+                                <div class="item-actions">
+                                    <a href="#" class="action-btn view-details"
+                                        onclick="openProductDetail(this); return false;">Chi Tiết</a>
+                                    <button class="action-btn add-to-cart">Đặt Mua</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="masterpiece-item" data-brand="ZORENB" data-origin="New York, USA"
+                            data-material="Nhung Tuyết & Lông Ngỗng" data-designer="ZORENB Atelier" data-year="2023">
+                            <button class="cart-floating-btn" title="Thêm vào giỏ hàng"><i
+                                    class="fas fa-shopping-cart"></i></button>
+                            <div class="masterpiece-img placeholder-hash">#</div>
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Winter Velvet Puffer</h4>
+                                <p class="item-price">$1,950.00</p>
+                                <!-- ROW ACTIONS: Xem & Mua -->
+                                <div class="item-actions">
+                                    <a href="#" class="action-btn view-details"
+                                        onclick="openProductDetail(this); return false;">Chi Tiết</a>
+                                    <button class="action-btn add-to-cart">Đặt Mua</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOCIAL PROBITY: Phần chân trang danh sách (Phân trang) -->
+                    <div class="pagination reveal">
+                        <a href="#" class="page-num active">01</a>
+                        <a href="#" class="page-num">02</a>
+                        <a href="#" class="page-num">03</a>
+                        <span class="page-num">...</span>
+                        <a href="#" class="page-num">12</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER: Supreme Luxury Edition -->
+        <footer class="site-footer reveal">
+            <div class="section-container">
+                <div class="footer-logo">ZORENB</div>
+                <p class="footer-heritage-msg">
+                    "ZORENB không chỉ là thời trang, đó là một di sản về sự tinh tế và đẳng cấp bền vững qua thời gian.
+                    Một tuyệt tác của Quiet Luxury bắt đầu từ sự lặng lẽ."
+                </p>
+                <nav class="footer-nav">
+                    <a href="#">BST Mùa Đông</a>
+                    <a href="#">Bespoke Atelier</a>
+                    <a href="#">Hành Trình Di Sản</a>
+                    <a href="#">Liên Hệ</a>
+                </nav>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 ZORENB Luxury Showroom. Được bảo hộ bởi di sản sáng tạo.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- QUICK CHECKOUT MODAL -->
+        <div class="checkout-overlay" id="checkout-overlay">
+            <div class="checkout-modal">
+                <span class="close-checkout" id="close-checkout">&times;</span>
+                <div class="checkout-product-preview">
+                    <img src="" alt="Product Preview" id="checkout-img">
+                    <div class="checkout-details">
+                        <h3 id="checkout-name">Product Name</h3>
+                        <p id="checkout-price">$0.00</p>
+                    </div>
+                </div>
+                <div class="checkout-options">
+                    <h4>Chọn Kích Cỡ</h4>
+                    <div class="size-selector">
+                        <span class="size-btn">S</span>
+                        <span class="size-btn active">M</span>
+                        <span class="size-btn">L</span>
+                        <span class="size-btn">XL</span>
+                    </div>
+                    <h4>Phương Thức Thanh Toán</h4>
+                    <div style="display: flex; gap: 1.5rem; margin-bottom: 3rem; color: #555; font-size: 2rem;">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-apple-pay"></i>
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <button class="btn-complete-order">Xác Nhận Đặt Hàng</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Kết thúc app-container -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Script xử lý các logic tương tác cho trang Collections -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const sidebar = document.getElementById('sidebar');
+
+        // --- Logic Cinematic Hero Slider - Tái sử dụng từ trang chủ ---
+        const heroTrack = document.getElementById('hero-track');
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const prevBtn = document.getElementById('hero-prev');
+        const nextBtn = document.getElementById('hero-next');
+        const heroBrand = document.getElementById('hero-brand');
+        const heroSlogan = document.getElementById('hero-slogan-main');
+        const heroSub = document.getElementById('hero-slogan-sub');
+        const heroContent = document.getElementById('hero-content');
+
+        const slideData = [
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Nghệ Thuật Của Sự Sang Trọng Thầm Lặng',
+                sub: 'Khởi nguồn từ kinh đô ánh sáng Paris, 1997'
+            },
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Di Sản Được Khắc Phục Trong Từng Mũi Chỉ',
+                sub: 'Mỗi tác phẩm là một cuộc đàm thoại giữa thợ thủ công và linh hồn'
+            },
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Tụng Ca Nghệ Thuật Trong Sự Im Lặng Hoàn Hảo',
+                sub: 'Nơi thời trang gặp gỡ triết học'
+            },
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Không Góc Cạnh Nào Là Thiếu Sự Cố Ý',
+                sub: 'Thiết kế với công thức chắc chắn như trật tự kiến trúc'
+            },
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Sự Thuần Khiết Là Hình Thức Xa Xỉ Thượng Hạng',
+                sub: 'Chất liệu chọn lọc từ những vùng đất hiếm của thế giới'
+            }
+        ];
+
+        const totalSlides = heroSlides.length;
+        let currentSlide = 0;
+        let slideInterval;
+        let isAnimating = false;
+
+        function updateContent(index) {
+            const data = slideData[index];
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                heroBrand.textContent = data.brand;
+                heroBrand.className = 'hero-brand ' + data.brandStyle;
+                heroSlogan.textContent = data.slogan;
+                heroSub.textContent = data.sub;
+
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 350);
+        }
+
+        if (heroTrack && totalSlides > 0) {
+            updateContent(0);
+
+            function goToSlide(index) {
+                if (isAnimating) return;
+                isAnimating = true;
+                currentSlide = ((index % totalSlides) + totalSlides) % totalSlides;
+                heroTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                updateContent(currentSlide);
+                setTimeout(() => { isAnimating = false; }, 950);
+            }
+
+            function nextSlide() { goToSlide(currentSlide + 1); }
+            function prevSlide() { goToSlide(currentSlide - 1); }
+
+            function startSlideShow() { slideInterval = setInterval(nextSlide, 8000); }
+            function resetSlideShow() { clearInterval(slideInterval); startSlideShow(); }
+            startSlideShow();
+
+            if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetSlideShow(); });
+            if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetSlideShow(); });
+        }
+
+        // --- 2. Logic Dual Range Price Slider (Thanh trượt giá) ---
+        const sliderMin = document.getElementById('slider-min');
+        const sliderMax = document.getElementById('slider-max');
+        const inputMin = document.getElementById('input-min');
+        const inputMax = document.getElementById('input-max');
+        const sliderTrack = document.getElementById('slider-track');
+        const MIN_GAP = 5000;
+        const MAX_PRICE = 150000;
+
+        function updateSliderTrack() { // Hàm cập nhật thanh trượt giá
+            const percent1 = (sliderMin.value / MAX_PRICE) * 100;
+            const percent2 = (sliderMax.value / MAX_PRICE) * 100;
+            sliderTrack.style.background = `linear-gradient(to right, #e5e5e5 ${percent1}% , #c5a059 ${percent1}% , #c5a059 ${percent2}%, #e5e5e5 ${percent2}%)`;
+        }
+
+        function validateMin() { // Kiểm tra giá trị tối thiểu
+            if (parseInt(sliderMax.value) - parseInt(sliderMin.value) <= MIN_GAP) {
+                sliderMin.value = parseInt(sliderMax.value) - MIN_GAP;
+            }
+            inputMin.value = sliderMin.value;
+            updateSliderTrack();
+        }
+
+        function validateMax() { // Kiểm tra giá trị tối đa
+            if (parseInt(sliderMax.value) - parseInt(sliderMin.value) <= MIN_GAP) {
+                sliderMax.value = parseInt(sliderMin.value) + MIN_GAP;
+            }
+            inputMax.value = sliderMax.value;
+            updateSliderTrack();
+        }
+
+        sliderMin.addEventListener('input', validateMin);
+        sliderMax.addEventListener('input', validateMax);
+
+        inputMin.addEventListener('change', () => { // Xử lý nhập liệu giá tối thiểu
+            let val = parseInt(inputMin.value);
+            if (val < 0) val = 0;
+            if (val > parseInt(sliderMax.value) - MIN_GAP) val = parseInt(sliderMax.value) - MIN_GAP;
+            sliderMin.value = val;
+            inputMin.value = val;
+            updateSliderTrack();
+        });
+
+        inputMax.addEventListener('change', () => { // Xử lý nhập liệu giá tối đa
+            let val = parseInt(inputMax.value);
+            if (val > MAX_PRICE) val = MAX_PRICE;
+            if (val < parseInt(sliderMin.value) + MIN_GAP) val = parseInt(sliderMin.value) + MIN_GAP;
+            sliderMax.value = val;
+            inputMax.value = val;
+            updateSliderTrack();
+        });
+
+        updateSliderTrack();
+
+        // --- 3. Logic Color Switcher (Chuyển màu sản phẩm) ---
+        document.querySelectorAll('.swatch').forEach(swatch => {
+            swatch.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const card = this.closest('.masterpiece-item');
+                const mainImg = card.querySelector('img');
+                const newImgSrc = this.getAttribute('data-image');
+                mainImg.style.opacity = '0.4';
+                setTimeout(() => {
+                    mainImg.src = newImgSrc;
+                    mainImg.style.opacity = '1';
+                }, 200);
+                card.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // --- Quick Checkout Modal Logic ---
+        const overlay = document.getElementById('checkout-overlay');
+        const closeModal = document.getElementById('close-checkout');
+
+        document.querySelectorAll('.item-price').forEach(priceTag => {
+            priceTag.style.cursor = 'pointer';
+            priceTag.addEventListener('click', function () {
+                const card = this.closest('.masterpiece-item');
+                const name = card.querySelector('.item-name').innerText;
+                const price = this.innerText;
+                const imgSrc = card.querySelector('img').src;
+
+                document.getElementById('checkout-name').innerText = name;
+                document.getElementById('checkout-price').innerText = price;
+                document.getElementById('checkout-img').src = imgSrc;
+
+                overlay.classList.add('active');
+            });
+        });
+
+        closeModal.addEventListener('click', () => overlay.classList.remove('active'));
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) overlay.classList.remove('active');
+        });
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.parentElement.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // --- Xử lý nút "Xác Nhận Đặt Hàng" -> Chuyển hướng Heritage ---
+        document.querySelector('.btn-complete-order').addEventListener('click', function () {
+            this.innerText = 'Đang xử lý di sản...';
+            this.style.opacity = '0.7';
+            setTimeout(() => {
+                window.location.href = 'thankyou.html';
+            }, 800);
+        });
+
+        // --- 7. ROUTING ĐỘNG: Đóng gói dữ liệu sang trang Chi tiết ---
+        function openProductDetail(button) {
+            const item = button.closest('.masterpiece-item');
+            if (item) {
+                const productData = {
+                    name: item.querySelector('.item-name').innerText,
+                    price: item.querySelector('.item-price').innerText,
+                    brand: item.getAttribute('data-brand') || 'ZORENB',
+                    origin: item.getAttribute('data-origin') || 'Chưa xác định',
+                    material: item.getAttribute('data-material') || 'Chưa xác định',
+                    designer: item.getAttribute('data-designer') || 'Chưa xác định',
+                    year: item.getAttribute('data-year') || new Date().getFullYear(),
+                    image: 'HASH_PLACEHOLDER'
+                };
+
+                // Lưu vào bộ nhớ cục bộ
+                localStorage.setItem('ZorenbCurrentProduct', JSON.stringify(productData));
+
+                // Chuyển hướng
+                window.location.href = 'product-detail.html';
+            }
+        }
+
+        // --- 8. Logic Thêm vào giỏ hàng từ nút Floating ---
+        document.querySelectorAll('.cart-floating-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const item = this.closest('.masterpiece-item');
+
+                const cartItem = {
+                    name: item.querySelector('.item-name').innerText,
+                    price: item.querySelector('.item-price').innerText,
+                    image: 'image/zorenb/product_01.jpg', // Ảnh mặc định hoặc lấy từ img nếu có
+                    size: 'M',
+                    qty: 1
+                };
+
+                let cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+                cart.push(cartItem);
+                localStorage.setItem('ZorenbCart', JSON.stringify(cart));
+                window.location.href = 'cart.html';
+            });
+        });
+
+        // --- 6. Logic Menu di động (Hamburger) ---
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                if (sidebar) sidebar.classList.toggle('active');
+            });
+        }
+    </script>
+
+    <!-- FLOATING CSKH PHONE WIDGET - Đặt ở cuối body để nằm trên mọi thứ -->
+    <a href="tel:18009090" class="support-ring-btn" id="support-widget" aria-label="Gọi Hỗ Trợ 18009090">
+        <span class="support-ring-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.07 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z">
+                </path>
+            </svg>
+        </span>
+        <span class="support-ring-text">
+            <span class="support-ring-char" style="--i:0">C</span><span class="support-ring-char"
+                style="--i:1">S</span><span class="support-ring-char" style="--i:2">K</span><span
+                class="support-ring-char" style="--i:3">H</span><span class="support-ring-char"
+                style="--i:4">&nbsp;</span><span class="support-ring-char" style="--i:5">1</span><span
+                class="support-ring-char" style="--i:6">8</span><span class="support-ring-char"
+                style="--i:7">0</span><span class="support-ring-char" style="--i:8">0</span><span
+                class="support-ring-char" style="--i:9">9</span><span class="support-ring-char"
+                style="--i:10">0</span><span class="support-ring-char" style="--i:11">9</span><span
+                class="support-ring-char" style="--i:12">0</span>
+        </span>
+    </a>
+</body>
+
+</html>

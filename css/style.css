@@ -1,0 +1,1836 @@
+/* 
+   LUXURY FASHION - DESIGN SYSTEM 
+   Hệ thống thiết kế cho trang web thời trang cao cấp.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap&subset=vietnamese');
+/* Font hỗ trợ Tiếng Việt */
+
+:root {
+    /* Luxury Color System - Quiet Luxury Edition */
+    --clr-onyx: #0a0a0a;
+    /* Đen sâu thẳm, nền tảng cho sự sang trọng */
+    --clr-ivory: #fcfcfc;
+    /* Trắng ngà cực nhẹ, tinh tế hơn trắng thuần */
+    --clr-gold: #c5a059;
+    /* Vàng Gold cổ điển, không quá chói */
+    --clr-platinum: #e5e5e5;
+    /* Màu bạch kim dành cho các đường hairline */
+
+    /* Typography & Spacing */
+    --font-primary: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --letter-spacing-wide: 0.8rem;
+    /* Giãn chữ rộng cho tiêu đề phụ */
+    --header-height: 8rem;
+    --transition-supreme: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    /* Chuyển động siêu mượt */
+    --transition-smooth: all 0.5s ease;
+}
+
+/* --- Base Styles --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--clr-onyx);
+    color: var(--clr-ivory);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Layout Components --- */
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+        "header"
+        "hero"
+        "main"
+        "footer";
+    width: 100vw;
+}
+
+.collections-page .app-container {
+    grid-template-areas:
+        "header"
+        "hero"
+        "main"
+        "footer";
+}
+
+/* Scroll Smoothing */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Site Header --- */
+.site-header {
+    grid-area: header;
+    height: var(--header-height);
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: transparent;
+    transition: var(--transition-smooth);
+}
+
+.header-scrolled {
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    color: var(--clr-gold);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 4rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--clr-ivory);
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--clr-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--clr-gold);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.cart-icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--clr-ivory);
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon-btn:hover {
+    color: var(--clr-gold);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background: var(--clr-gold);
+    color: var(--clr-onyx);
+    font-size: 0.9rem;
+    font-weight: 700;
+    min-width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-auth {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-decoration: none;
+    color: var(--clr-ivory);
+    transition: color 0.3s ease;
+}
+
+.register-btn {
+    border: 1px solid var(--clr-gold);
+    padding: 1.2rem 2.8rem;
+    border-radius: 4px;
+    /* Slight rounding for modern luxury */
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: var(--clr-gold);
+    color: var(--clr-onyx);
+}
+
+/* Mobile Hamburger */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 1px;
+    background-color: var(--clr-gold);
+    transition: 0.3s;
+}
+
+/* Dropdown Support */
+.has-dropdown {
+    position: relative;
+}
+
+.sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--clr-onyx);
+    list-style: none;
+    padding: 2rem 0;
+    width: 22rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.has-dropdown:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.sub-link {
+    display: block;
+    padding: 1.2rem 3rem;
+    text-decoration: none;
+    color: #999;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s ease;
+}
+
+.sub-link:hover {
+    color: var(--clr-gold);
+    background-color: rgba(255, 255, 255, 0.02);
+    padding-left: 3.5rem;
+}
+
+/* --- Image Hero Section --- */
+.image-hero {
+    grid-area: hero;
+    width: 100%;
+    height: 80vh;
+    /* Nới rộng thêm để lấy được cả phần thân trên */
+    margin-top: 100px;
+    /* 8rem (Header) + 20px (Gap) */
+    margin-bottom: 5rem;
+    display: flex;
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    justify-content: flex-start;
+    /* Nhất quán bên trái */
+    padding-left: 5%;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--clr-onyx);
+    font-family: 'Roboto', sans-serif;
+    /* Ép Roboto cho toàn bộ Hero */
+}
+
+/* Slider Container - Dải trượt ngang chướng ngại vật cuốn */
+.hero-slides-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    /* Cắt ảnh thừa nằm ngoài khung nhìn */
+}
+
+/* Dải Phù Bảng (Track) chứa toàn bộ các bức ảnh nối tiếp nhau theo chiều ngang */
+.hero-track {
+    display: flex;
+    width: 100%;
+    /* Con track chiếm 100% khứ, transform sẽ đẩy qua lại */
+    height: 100%;
+    transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+    /* Sóng trượt Ease Mellow */
+    will-change: transform;
+    /* Báo trước GPU để render mượt tuyệt đối */
+}
+
+/* Mọi Slide chiếm đống đầy khung nhìn, không co rút */
+.hero-slide {
+    flex: 0 0 100%;
+    /* Cứng bề ngang - chiếm đúng 100% không co dãn */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    transition: transform 8s ease-out;
+    /* Subtle Ken Burns effect trên ảnh đang active */
+}
+
+/* Điểm vàng cho ảnh 1 (Chân dung ZORENB) */
+.hero-slide:nth-child(1) .hero-bg {
+    object-position: 25% 15%;
+}
+
+/* Nút Điều Hương Trái/Phải */
+.hero-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--clr-platinum);
+    opacity: 0.4;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.4s ease;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-nav-btn:hover {
+    opacity: 1;
+    color: var(--clr-gold);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 2%;
+    /* Nằm sát lề trái */
+}
+
+.next-btn {
+    right: 2%;
+    /* Nằm sát lề phải */
+}
+
+.hero-overlay {
+    /* Left-aligned overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    /* Gradient from deep black to transparent on the right */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 2;
+    /* Nổi lên trên ảnh */
+}
+
+.hero-content {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    color: white;
+    z-index: 3;
+    padding: 2rem 0;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.hero-brand {
+    font-size: 10rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+
+    /* Hiệu ứng Vàng Kim Chảy Liên Tục Trái Sang Phải */
+    background: linear-gradient(90deg,
+            var(--clr-gold) 0%,
+            var(--clr-gold) 45%,
+            #FFF6D9 50%,
+            var(--clr-gold) 55%,
+            var(--clr-gold) 100%);
+    background-size: 200% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: goldShimmer 4s linear infinite;
+
+    /* Hào quang lấp lánh phản chiếu xung quanh chữ */
+    text-shadow: 0 4px 30px rgba(197, 160, 89, 0.4);
+}
+
+@keyframes goldShimmer {
+    0% {
+        background-position: 200% 0;
+        /* Bắt đầu ngoài cùng bên phải */
+    }
+
+    100% {
+        background-position: -200% 0;
+        /* Quét dần sang bên trái để tạo luồng loé sáng đi từ Trái -> Phải của khung nhìn */
+    }
+}
+
+.hero-slogan-main {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.5rem;
+    margin-bottom: 2rem;
+    color: var(--clr-gold);
+    transition: inherit;
+}
+
+.hero-slogan-sub {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    color: #999;
+    letter-spacing: 0.2rem;
+    transition: inherit;
+}
+
+/* =============================================
+   ZORENB - 5 Kiểu chữ cách điệu Signature
+   ============================================= */
+
+/* Slide 1: Vàng Kim Chảy (Mặc định) */
+.hero-brand.style-shimmer {
+    font-size: 10rem;
+    font-weight: 700;
+    letter-spacing: 2rem;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(90deg, var(--clr-gold) 0%, var(--clr-gold) 45%, #FFF6D9 50%, var(--clr-gold) 55%, var(--clr-gold) 100%);
+    background-size: 200% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: goldShimmer 4s linear infinite;
+    text-shadow: 0 4px 30px rgba(197, 160, 89, 0.4);
+}
+
+/* Slide 2: Outline viền trắng */
+.hero-brand.style-outline {
+    font-size: 9.5rem;
+    font-weight: 700;
+    letter-spacing: 3rem;
+    font-family: 'Roboto', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    animation: none;
+    text-shadow: none;
+}
+
+/* Slide 3: Roboto Italic thanh lịch */
+.hero-brand.style-italic {
+    font-size: 11rem;
+    font-weight: 400;
+    letter-spacing: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    color: var(--clr-ivory);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    animation: none;
+    text-shadow: 0 2px 40px rgba(255, 255, 255, 0.15);
+}
+
+/* Slide 4: Roboto Black đậm cứng rắn */
+.hero-brand.style-condensed {
+    font-size: 12rem;
+    font-weight: 900;
+    letter-spacing: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    animation: none;
+    text-shadow: 0 0 60px rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+}
+
+/* Slide 5: Roboto Light siêu mỏng */
+.hero-brand.style-ultralight {
+    font-size: 8.5rem;
+    font-weight: 300;
+    letter-spacing: 4rem;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    animation: none;
+    text-shadow: none;
+}
+
+.site-main {
+    grid-area: main;
+    padding-top: 10rem;
+    /* Tăng khoảng cách an toàn với phần Hero phía trên */
+    padding-bottom: 10rem;
+    /* Tăng khoảng cách với Footer hoặc các phần tử dưới cùng */
+    display: flex;
+    flex-direction: column;
+    gap: 15rem;
+    /* Căn chỉnh khoảng cách giữa các khối (section) bên trong hợp lý, thoáng đãng không bị sát nhau */
+}
+
+/* --- New Specialized Hero Class --- */
+.hero-special {
+    width: 100vw;
+    height: 50vh;
+    /* Thu nhỏ để làm banner điểm nhấn hợp lý */
+    margin-top: 2rem;
+    margin-bottom: 8rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Nội dung nằm bên PHẢI */
+    background-color: var(--clr-onyx);
+}
+
+.hero-special .hero-bg {
+    object-position: 15%;
+    /* Đồng bộ điểm vàng cho layout đặc biệt */
+    z-index: 1;
+}
+
+.hero-special .hero-content {
+    margin-right: max(5rem, 50rem);
+    /* Sử dụng 50rem theo yêu cầu, có fallback 5rem */
+    text-align: right;
+    align-items: flex-end;
+    z-index: 3;
+}
+
+.hero-special .hero-brand {
+    font-size: 12rem;
+    mix-blend-mode: overlay;
+    color: var(--clr-platinum);
+    opacity: 0.8;
+}
+
+/* --- Section Title and Labels --- */
+.section-container {
+    width: 100%;
+    max-width: 140rem;
+    margin: 8rem auto;
+    padding: 0 5%;
+}
+
+.section-label {
+    display: block;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+    color: var(--clr-gold);
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    font-weight: 400;
+    margin-bottom: 5rem;
+    letter-spacing: 0.2rem;
+}
+
+/* --- Masterpiece Layout Wrappers --- */
+.masterpiece-showcase {
+    padding: 10rem 0 0 0;
+    /* Xóa trống padding đáy */
+    background-color: var(--clr-onyx);
+}
+
+/* Ép margin đáy của container lưới Masterpiece bằng 0 để đoạn Text kéo sát lên trên */
+.masterpiece-showcase .section-container {
+    margin-bottom: 4rem;
+}
+
+/* --- Masterpiece Gallery: Bento Grid Layout --- */
+.masterpiece-grid {
+    display: grid;
+    /* Lưới 4 cột để thoả sức xếp hình bất đối xứng */
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 25rem;
+    /* Cơ sở chiều cao cho từng khối Bento */
+    gap: 1.5rem;
+    /* Gap nhỏ tạo cảm giác bảo tàng liền mạch */
+    grid-auto-flow: dense;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.masterpiece-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    /* Khai tử viền hộp thô kệch */
+    transition: var(--transition-supreme);
+    width: 100%;
+    height: 100%;
+    /* Bộc lộ cấu trúc ép hình ảnh khớp 100% vào ô grid */
+}
+
+/* Hiệu ứng viền nổi lên cực nhẹ khi Hover - "Quiet Luxury" */
+.masterpiece-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0);
+    transition: var(--transition-supreme);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.masterpiece-item:hover::after {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Định hình không gian (Span) cho từng khung ảnh - KHÔNG DÙNG MARGIN ÂM */
+/* Bức ảnh 1: Masterpiece khổng lồ (2 cột x 2 hàng) */
+.masterpiece-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Bức ảnh 4: Landscape trải dài ngang (2 cột x 1 hàng) */
+.masterpiece-item:nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+/* Kéo trọng tâm ảnh số 4 lên phía trên để không cắt mất khuôn mặt/thân nhân vật khi ảnh bị ép ngang */
+.masterpiece-item:nth-child(4) .masterpiece-img {
+    object-position: center 20%;
+}
+
+/* Bức ảnh 5, 6: Dáng chân dung thon dài (1 cột x 2 hàng) */
+.masterpiece-item:nth-child(5),
+.masterpiece-item:nth-child(6) {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+/* Kéo trọng tâm ảnh số 5 lên đỉnh để không bị phóng to cắt mất đầu khi ở khung dạng dọc hẹp */
+.masterpiece-item:nth-child(5) .masterpiece-img {
+    object-position: center top;
+}
+
+/* Bức ảnh 7, 8: Dáng ngang vuông vức lấp đầy góc lưới (2 cột x 1 hàng) */
+.masterpiece-item:nth-child(7),
+.masterpiece-item:nth-child(8) {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+/* Bức ảnh 2, 3 tự động điền đầy thành những khối vuông (1x1) hoàn mỹ */
+
+.masterpiece-img {
+    position: absolute;
+    /* Ép cứng vị trí để không bị ảnh hưởng bởi thẻ inline gốc */
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.masterpiece-item:hover .masterpiece-img {
+    transform: scale(1.08);
+}
+
+.masterpiece-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem;
+    /* Thu nhỏ padding mặc định để chữ nằm sát đáy, không che ảnh */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 80%);
+    opacity: 1;
+    transform: translateY(0);
+    transition: var(--transition-smooth);
+}
+
+.masterpiece-item:hover .masterpiece-info {
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+    /* Làm đậm nền hơn khi hover */
+}
+
+.item-name {
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+    /* Làm nhỏ phông chữ cho các ô bé */
+    font-weight: 300;
+    letter-spacing: 0.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.item-price {
+    font-size: 1.1rem;
+    color: var(--clr-gold);
+    letter-spacing: 0.1rem;
+    margin-bottom: 1.2rem;
+}
+
+/* Nút Xem Chi Tiết cho các thẻ sản phẩm */
+.btn-details {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+    /* Thu nhỏ nút bấm tương ứng */
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: var(--clr-ivory);
+    border: 1px solid var(--clr-platinum);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    background: transparent;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.btn-details:hover {
+    background-color: var(--clr-gold);
+    border-color: var(--clr-gold);
+    color: var(--clr-onyx);
+}
+
+/* === Lấy Lại Quyền Lực Cho Ô Số 1 (Khổng Lồ) === */
+.masterpiece-item:nth-child(1) .masterpiece-info {
+    padding: 5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.masterpiece-item:nth-child(1) .item-name {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.masterpiece-item:nth-child(1) .item-price {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+}
+
+.masterpiece-item:nth-child(1) .btn-details {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* --- Editorial Quote Transition --- */
+.editorial-quote {
+    background-color: var(--clr-onyx);
+    padding: 0;
+    margin: 0;
+}
+
+.editorial-quote .section-container {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 80rem;
+    padding: 0 5%;
+    /* Xoá mọi padding thừa */
+}
+
+.editorial-quote .quote-text {
+    font-family: var(--font-serif);
+    font-size: 3.2rem;
+    /* Trả lại font size to nghệ thuật nguyên bản */
+    font-weight: 400;
+    font-style: italic;
+    color: var(--clr-gold);
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.editorial-quote .quote-author {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: #888;
+}
+
+/* --- Bestsellers: Staggered Rounded Grid --- */
+.staggered-section {
+    padding: 1rem 0 15rem 0;
+    /* Padding trên cực nhỏ (1rem) */
+    position: relative;
+    background-color: var(--clr-onyx);
+}
+
+.staggered-container {
+    position: relative;
+    max-width: 130rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.staggered-header {
+    text-align: center;
+    margin-bottom: 8rem;
+}
+
+.staggered-title {
+    font-family: var(--font-primary);
+    font-size: 4.8rem;
+    font-weight: 800;
+    /* Dày, khỏe */
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: var(--clr-ivory);
+    /* Chữ trắng ngà nổi bật */
+    text-transform: uppercase;
+}
+
+.title-luxury {
+    background-color: var(--clr-gold);
+    /* Chữ ký vàng Gold sang trọng */
+    color: var(--clr-onyx);
+    /* Chữ đen chìm sâu */
+    padding: 0.2rem 2rem;
+    border-radius: 40px;
+    /* Bo bo cong như nét Highlight đen */
+    display: inline-block;
+    font-style: italic;
+    transform: rotate(-2deg);
+    /* Nghiêng nhẹ giả vờ Brush */
+}
+
+.staggered-link {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.15rem;
+    color: var(--clr-gold);
+    text-decoration: none;
+    border-bottom: 2px solid var(--clr-gold);
+    padding-bottom: 0.4rem;
+    transition: var(--transition-smooth);
+}
+
+.staggered-link:hover {
+    color: var(--clr-ivory);
+    border-bottom-color: var(--clr-ivory);
+}
+
+.staggered-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    /* Khe hở */
+    position: relative;
+}
+
+.staggered-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* Bí quyết tạo So Le: Đẩy Cột 2 & Cột 3 văng xuống dưới */
+.staggered-col.shifted {
+    transform: translateY(6rem);
+}
+
+/* Thẻ lưới (Card) */
+.staggered-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    border-radius: 20px;
+    /* Bo góc cực mạnh */
+    background-color: transparent;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    /* Khung viền viền mỏng ngoài cùng */
+    padding: 2rem;
+    /* XÂY DỰNG KHUNG VIỀN NỔI 2 REM BÊN TRONG BỨC ẢNH */
+    aspect-ratio: 3.5 / 4;
+    /* Tỉ lệ thẻ chữ nhật dài thanh lịch */
+    transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.staggered-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.2);
+    /* Đổi bóng đổ xám thành bóng đổ ánh vàng */
+    border-color: var(--clr-gold);
+    /* Viền sáng vàng chói khi hover */
+}
+
+/* Lưu ý: Nếu có khung viền bọc thì border-radius sẽ ko ẩn được ảnh, ta phải bọc ảnh lại thủ công */
+.staggered-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    /* Bức ảnh lùi vào 2rem nên cũng cần bo góc cho nghệ thuật */
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.staggered-card:hover img {
+    transform: scale(1.06);
+}
+
+/* Dòng chữ ở đáy thẻ */
+.card-label {
+    position: absolute;
+    bottom: 3.5rem;
+    /* Đẩy chữ lên khỏi rìa của khung viền 2rem */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 0.15rem;
+    /* Khoảng cách chữ rõ ràng */
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    /* Đổ bóng mạnh để chữ nổi bần bật trên nền cảnh */
+    pointer-events: none;
+}
+
+/* Nút Next ở cánh phải */
+.staggered-nav-next {
+    position: absolute;
+    right: -2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5.5rem;
+    height: 5.5rem;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.staggered-nav-next:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-50%) scale(1.05);
+    /* Tương tác lớn lên một xíu */
+}
+
+/* --- Heritage Narrative --- */
+.heritage-narrative {
+    padding: 15rem 0;
+    background-color: #0f0f0f;
+}
+
+.heritage-text {
+    flex: 1;
+}
+
+.heritage-label {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8rem;
+    color: var(--clr-gold);
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.heritage-title {
+    font-family: var(--font-serif);
+    font-size: 5.5rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+    line-height: 1.2;
+    /* Hiệu ứng màu sắc Luxury: Gradient Vàng Gold lấp lánh */
+    background: linear-gradient(135deg, var(--clr-gold) 0%, #E6C875 50%, #A67C00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(197, 160, 89, 0.15);
+    /* Ánh sáng hào quang nhẹ bao quanh chữ */
+}
+
+.heritage-desc {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 2.2rem;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 4rem;
+    max-width: 80%;
+}
+
+.heritage-cta {
+    display: inline-block;
+    padding: 1.8rem 4.5rem;
+    border: 1px solid var(--clr-gold);
+    color: var(--clr-gold);
+    text-decoration: none;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    transition: var(--transition-smooth);
+}
+
+.heritage-cta:hover {
+    background-color: var(--clr-gold);
+    color: var(--clr-onyx);
+}
+
+.heritage-image {
+    flex: 0.8;
+    height: 70rem;
+    overflow: hidden;
+}
+
+.heritage-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.2);
+}
+
+/* --- Editorial Quote --- */
+.editorial-quote {
+    padding: 20rem 0;
+    text-align: center;
+}
+
+.quote-text {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    line-height: 1.6;
+    max-width: 100rem;
+    margin: 0 auto 4rem;
+}
+
+.quote-author {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+    color: var(--clr-gold);
+}
+
+/* --- Side Navigation & Filtering (Collections Page) --- */
+.main-with-sidebar {
+    display: grid;
+    grid-template-columns: 28rem 1fr;
+    gap: 8rem;
+}
+
+.sidebar {
+    position: sticky;
+    top: 15rem;
+    align-self: start;
+    padding-top: 2rem;
+}
+
+.filter-group {
+    margin-bottom: 6rem;
+}
+
+.filter-title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    color: var(--clr-gold);
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    padding-bottom: 1.5rem;
+}
+
+.filter-list {
+    list-style: none;
+}
+
+.filter-item {
+    margin-bottom: 1.5rem;
+}
+
+.filter-link {
+    text-decoration: none;
+    color: #888;
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.filter-link:hover,
+.filter-link.active {
+    color: var(--clr-gold);
+}
+
+/* Price Range Slider Premium */
+.price-slider-container {
+    padding: 2rem 0;
+}
+
+.range-slider {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background-color: #222;
+    margin-bottom: 4rem;
+}
+
+.slider-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--clr-gold);
+    border-radius: 2px;
+}
+
+.slider-input {
+    position: absolute;
+    top: -14px;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+    appearance: none;
+}
+
+.slider-input::-webkit-slider-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: var(--clr-gold);
+    pointer-events: auto;
+    appearance: none;
+    cursor: pointer;
+}
+
+.price-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.price-box {
+    flex: 1;
+}
+
+.price-box label {
+    display: block;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+}
+
+.price-box input {
+    width: 100%;
+    background-color: #111;
+    border: 1px solid #222;
+    color: var(--clr-gold);
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 2px;
+}
+
+/* Swatch Colors */
+.color-swatches {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.swatch {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.swatch:hover,
+.swatch.active {
+    border-color: var(--clr-gold);
+}
+
+/* --- Pagination Premium --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 10rem;
+    padding-bottom: 10rem;
+}
+
+.page-num {
+    font-size: 1.4rem;
+    color: #555;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.page-num.active,
+.page-num:hover {
+    color: var(--clr-gold);
+}
+
+/* --- Checkout Modal Supreme --- */
+.checkout-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.checkout-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.checkout-modal {
+    background-color: #0c0c0c;
+    width: 90rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.close-checkout {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 4rem;
+    color: #444;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.checkout-product-preview {
+    background-color: #080808;
+    overflow: hidden;
+}
+
+.checkout-product-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.checkout-options {
+    padding: 6rem;
+}
+
+.checkout-options h4 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    color: var(--clr-gold);
+    margin: 4rem 0 2rem;
+}
+
+.checkout-options h4:first-child {
+    margin-top: 0;
+}
+
+.size-selector {
+    display: flex;
+    gap: 2rem;
+}
+
+.size-btn {
+    font-size: 1.4rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.size-btn.active {
+    color: var(--clr-gold);
+    border-bottom: 1px solid var(--clr-gold);
+}
+
+.btn-complete-order {
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--clr-gold);
+    color: var(--clr-onyx);
+    border: none;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    cursor: pointer;
+    margin-top: 5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-complete-order:hover {
+    background-color: #e2c07d;
+}
+
+/* --- Site Footer --- */
+.site-footer {
+    grid-area: footer;
+    padding: 12rem 0 6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+    color: var(--clr-gold);
+    margin-bottom: 4rem;
+}
+
+.footer-heritage-msg {
+    max-width: 60rem;
+    margin: 0 auto 5rem;
+    color: #666;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: #999;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.footer-bottom {
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* --- Reveal Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(4rem);
+    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* stagger effects for gallery */
+.masterpiece-item {
+    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Typewriter Cursor Styling */
+.typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.8em;
+    background-color: var(--clr-gold);
+    margin-left: 2px;
+    animation: blink 0.8s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .masterpiece-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .masterpiece-item:nth-child(n) {
+        height: 50rem;
+        margin-top: 0;
+    }
+
+    .main-with-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+        margin-bottom: 6rem;
+    }
+
+    .hero-brand {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: var(--clr-onyx);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        z-index: 1000;
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .header-actions {
+        display: none;
+    }
+
+    .section-title {
+        font-size: 3.5rem;
+    }
+
+    .masterpiece-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-brand {
+        font-size: 5rem;
+    }
+
+    .hero-content {
+        max-width: 90%;
+    }
+}
+
+/* =============================================
+   FLOATING CSKH HOTLINE WIDGET
+   ============================================= */
+.support-ring-btn {
+    position: fixed !important;
+    bottom: 3rem !important;
+    right: 3rem !important;
+    z-index: 999999 !important;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem 2rem;
+    background: rgba(10, 10, 10, 0.85);
+    border: 1px solid rgba(197, 160, 89, 0.5);
+    border-radius: 50px;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(197, 160, 89, 0.15);
+    transition: transform 0.35s cubic-bezier(0.2, 1, 0.3, 1),
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+    cursor: pointer;
+}
+
+.support-ring-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 40px rgba(197, 160, 89, 0.35);
+    border-color: var(--clr-gold);
+}
+
+/* Icon điện thoại — rung lắc liên tục */
+.support-ring-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-gold);
+    animation: phoneRing 2.5s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes phoneRing {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    5% {
+        transform: rotate(15deg);
+    }
+
+    10% {
+        transform: rotate(-12deg);
+    }
+
+    15% {
+        transform: rotate(10deg);
+    }
+
+    20% {
+        transform: rotate(-8deg);
+    }
+
+    25% {
+        transform: rotate(6deg);
+    }
+
+    30% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Label chứa từng ký tự nhảy */
+.support-ring-text {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    font-family: var(--font-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    color: var(--clr-gold);
+    animation: labelShimmer 3s ease-in-out infinite;
+}
+
+@keyframes labelShimmer {
+
+    0%,
+    100% {
+        text-shadow: 0 0 5px rgba(197, 160, 89, 0.2);
+    }
+
+    50% {
+        text-shadow: 0 0 15px rgba(197, 160, 89, 0.8), 0 0 30px rgba(197, 160, 89, 0.4);
+    }
+}
+
+/* Từng ký tự nhảy lên xuống xen kẽ */
+.support-ring-char {
+    display: inline-block;
+    animation: charBounce 1.6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.08s);
+}
+
+@keyframes charBounce {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-6px);
+    }
+
+    45% {
+        transform: translateY(-2px);
+    }
+}
+
+/* =============================================
+   EDITORIAL / KHY STYLE WIREFRAME LAYOUT (COLLECTIONS PAGE)
+   ============================================= */
+/* Xóa giới hạn lề của section-container để tràn full màn hình */
+.collections-page .site-main.section-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Đuổi sidebar về sát trái, cách 30rem (width cứng) */
+.collections-page .main-with-sidebar {
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+    gap: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.collections-page .sidebar {
+    position: sticky;
+    /* Trượt theo cuộn */
+    top: 0;
+    height: 100vh;
+    padding: 3rem;
+    padding-top: 10rem;
+    /* Đẩy xuống tránh đè header */
+    margin: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: var(--clr-onyx);
+    overflow-y: auto;
+}
+
+/* Nội dung main phân chia layout Grid rõ ràng với khung viền sắc lạnh */
+.collections-page .masterpiece-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+    gap: 0;
+    /* Xóa khoảng trống, chỉ dùng viền phân chia */
+}
+
+/* Loại bỏ độ lệch (staggered) và các góc bo (radius) để tạo brutalist look */
+.collections-page .masterpiece-item {
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 2.5rem;
+    margin: 0;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none !important;
+    transition: background-color 0.3s;
+}
+
+.collections-page .masterpiece-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.collections-page .masterpiece-item img,
+.collections-page .masterpiece-item .placeholder-hash {
+    border-radius: 0;
+    height: 38rem;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    transition: filter 0.3s ease, background-color 0.3s ease;
+}
+
+.collections-page .masterpiece-item .placeholder-hash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Nền xám mờ */
+    color: rgba(255, 255, 255, 0.15);
+    /* Màu viền cho dấu # */
+    font-size: 8rem;
+    font-family: monospace;
+    font-weight: 300;
+}
+
+.collections-page .masterpiece-item:hover img,
+.collections-page .masterpiece-item:hover .placeholder-hash {
+    transform: none;
+    filter: brightness(1.15);
+    background-color: rgba(255, 255, 255, 0.08);
+    /* Sáng lên khi hover */
+}
+
+/* Flexbox cho chi tiết nhỏ bên trong mỗi thẻ Grid */
+.collections-page .masterpiece-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.collections-page .item-name {
+    flex: 1 1 100%;
+    /* Giữ tên ở hàng trên cùng kéo dài hết cỡ */
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: var(--clr-ivory);
+    margin-bottom: 0.2rem;
+}
+
+.collections-page .item-price {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--clr-gold);
+}
+
+.collections-page .color-swatches {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.collections-page .swatch {
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- Row Actions Grid --- */
+.collections-page .item-actions {
+    flex: 1 1 100%;
+    display: flex;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    /* Đường phân cách gọn gàng */
+}
+
+.collections-page .action-btn {
+    flex: 1;
+    padding: 1.5rem 0;
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    /* Khoảng cách giữa icon và chữ */
+}
+
+.collections-page .action-btn.view-details {
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.collections-page .action-btn:hover {
+    color: var(--clr-gold);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Floating Cart Icon (Góc trên bên phải) --- */
+.collections-page .masterpiece-item {
+    position: relative;
+}
+
+.collections-page .cart-floating-btn {
+    position: absolute;
+    top: 3.5rem;
+    /* Đặt lọt vào góc của viền ảnh placeholder */
+    right: 3.5rem;
+    background: transparent;
+    border: none;
+    color: #ff2a2a;
+    /* Màu đỏ rực rỡ */
+    font-size: 2.2rem;
+    /* Kích thước hợp lý */
+    cursor: pointer;
+    z-index: 10;
+    padding: 1rem;
+    /* Mở rộng vùng bấm */
+    margin: -1rem;
+    /* Bù trừ vùng bấm để không lệch vị trí */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.collections-page .cart-floating-btn:hover {
+    transform: scale(1.15) rotate(-10deg);
+    filter: drop-shadow(0 0 10px rgba(255, 42, 42, 0.6));
+}

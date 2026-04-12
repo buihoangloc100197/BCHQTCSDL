@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratitude | ZORENB Luxury Heritage</title>
+    <!-- FontAwesome for the check icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="thank-you-page">
+
+    <div class="app-container">
+        
+        <!-- HEADER: Giữ vững tính nhất quán với toàn bộ hệ thống -->
+        <header class="site-header">
+            <div class="logo">ZORENB</div>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                    <li><a href="collections.html" class="nav-link">Bộ Sưu Tập</a></li>
+                    <li><a href="#" class="nav-link">Di Sản</a></li>
+                    <li><a href="#" class="nav-link">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn-auth login-link">Tài Khoản</a>
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </header>
+
+        <!-- MAIN CONTENT: Thông điệp tri ân mang phong cách di sản -->
+        <main class="site-main">
+            <section class="thankyou-view">
+                <div class="thankyou-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                
+                <h1 class="thankyou-title">A Token of Gratitude</h1>
+                
+                <p class="thankyou-msg">
+                    Cảm ơn bạn đã lựa chọn trở thành một phần của di sản <strong>ZORENB</strong>. 
+                    Mỗi tác phẩm bạn vừa lựa chọn đang được các nghệ nhân của chúng tôi chuẩn bị với sự tâm huyết và thiết lập tiêu chuẩn tỉ mỉ nhất. 
+                    Hành trình phong cách mới của bạn bắt đầu từ đây.
+                </p>
+
+                <div class="order-number" id="display-order-id">
+                    ZNB-ORDER-2024-8888
+                </div>
+
+                <div class="thankyou-actions">
+                    <a href="index.html" class="btn-home">Quay về Di sản</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER: Đồng nhất phong cách ZORENB -->
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">ZORENB</div>
+                    <p>ZORENB không chỉ là thời trang, đó là một di sản về sự tinh tế và đẳng cấp bền vững qua thời gian.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Khám Phá</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Bộ Sưu Tập Mùa Đông</a></li>
+                        <li><a href="#">Siêu Tác Phẩm Bespoke</a></li>
+                        <li><a href="#">Câu Chuyện Di Sản</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Thông Tin</h4>
+                    <ul class="footer-links">
+                        <li>Điều khoản dịch vụ</li>
+                        <li>Chính sách bảo mật</li>
+                        <li>Vận chuyển toàn cầu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ZORENB Luxury Showroom. Tất cả các tác phẩm đều được bảo hộ bản quyền.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Script Hamburger Menu cho trang cảm ơn -->
+    <script>
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // Tạo mã đơn hàng ngẫu nhiên để tăng tính thực tế
+        const randomId = Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('display-order-id').innerText = `ZNB-ORDER-2024-${randomId}`;
+    </script>
+</body>
+</html>

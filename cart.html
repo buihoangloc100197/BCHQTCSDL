@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng | ZORENB Luxury Heritage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cart-section {
+            padding: 15rem 5% 10rem;
+            min-height: 70vh;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cart-title {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--clr-gold);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 1fr 35rem;
+            gap: 5rem;
+        }
+
+        .cart-items {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 3rem;
+        }
+
+        .cart-item-img {
+            width: 12rem;
+            height: 16rem;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--clr-ivory);
+        }
+
+        .cart-item-meta {
+            color: #666;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        .cart-item-price {
+            color: var(--clr-gold);
+            font-size: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .cart-qty-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #333;
+            width: fit-content;
+            margin-top: 1.5rem;
+        }
+
+        .cart-qty-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            width: 3.5rem;
+            height: 3.5rem;
+            cursor: pointer;
+        }
+
+        .cart-qty-val {
+            padding: 0 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .cart-summary {
+            background: #0f0f0f;
+            padding: 4rem;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 12rem;
+        }
+
+        .summary-title {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            color: #888;
+        }
+
+        .summary-total {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            color: var(--clr-ivory);
+            font-weight: 600;
+            font-size: 2rem;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            padding: 2rem;
+            background: var(--clr-gold);
+            color: #000;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            cursor: pointer;
+            margin-top: 3rem;
+            transition: 0.3s;
+        }
+
+        .btn-checkout:hover {
+            background: #e6c875;
+            transform: translateY(-3px);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 10rem 0;
+        }
+
+        .btn-continue {
+            display: inline-block;
+            margin-top: 3rem;
+            color: var(--clr-gold);
+            text-decoration: none;
+            border-bottom: 1px solid;
+            padding-bottom: 5px;
+            font-size: 1.4rem;
+        }
+
+        .btn-clear-all {
+            background: transparent;
+            border: 1px solid #444;
+            color: #888;
+            padding: 1.5rem 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .btn-clear-all:hover {
+            border-color: #ff4d4d;
+            color: #ff4d4d;
+        }
+
+        .delete-item-btn {
+            color: #555;
+            transition: 0.3s;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .delete-item-btn:hover {
+            color: #ff4d4d;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="site-header header-scrolled">
+            <div class="logo">ZORENB</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                    <li><a href="collections.html" class="nav-link">Bộ Sưu Tập</a></li>
+                    <li><a href="#" class="nav-link">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="cart-section">
+            <div class="cart-container">
+                <h1 class="cart-title">Your Atelier Cart</h1>
+
+                <div id="cart-content">
+                    <!-- Content loaded by JS -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="section-container">
+                <div class="footer-logo">ZORENB</div>
+                <p>&copy; 2024 ZORENB Luxury Showroom.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+            const container = document.getElementById('cart-content');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-cart">
+                        <p style="font-size: 1.8rem; color: #666;">Giỏ hàng của bạn đang trống.</p>
+                        <a href="collections.html" class="btn-continue">Tiếp tục khám phá bộ sưu tập</a>
+                    </div>`;
+                return;
+            }
+
+            let subtotal = 0;
+            const itemsHtml = cart.map((item, index) => {
+                const price = parseFloat(item.price.replace('$', '').replace(',', ''));
+                subtotal += price * item.qty;
+                return `
+                    <div class="cart-item">
+                        <img src="${item.image}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <h3 class="cart-item-name">${item.name}</h3>
+                            <p class="cart-item-meta">Size: ${item.size} | Màu: ${item.color}</p>
+                            <p class="cart-item-price">${item.price}</p>
+                            <div class="cart-qty-control">
+                                <button class="cart-qty-btn" onclick="updateQty(${index}, -1)">−</button>
+                                <span class="cart-qty-val">${item.qty}</span>
+                                <button class="cart-qty-btn" onclick="updateQty(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="delete-item-btn" onclick="removeItem(${index})">
+                            <i class="fas fa-trash-alt" style="font-size: 1.8rem;"></i>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <div class="cart-grid">
+                    <div class="cart-items">${itemsHtml}</div>
+                    <div class="cart-summary">
+                        <h2 class="summary-title">Tạm tính</h2>
+                        <div class="summary-row"><span>Sản phẩm</span><span>$${subtotal.toLocaleString()}</span></div>
+                        <div class="summary-row"><span>Vận chuyển</span><span>Free</span></div>
+                        <div class="summary-total"><div class="summary-row" style="color:inherit"><span>Tổng cộng</span><span>$${subtotal.toLocaleString()}</span></div></div>
+                        <button class="btn-checkout" onclick="window.location.href='thankyou.html'">Thanh Toán</button>
+                        <button class="btn-clear-all" onclick="clearFullCart()">Hủy Toàn Bộ</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.updateQty = (index, delta) => {
+            let cart = JSON.parse(localStorage.getItem('ZorenbCart'));
+            cart[index].qty = Math.max(1, cart[index].qty + delta);
+            localStorage.setItem('ZorenbCart', JSON.stringify(cart));
+            renderCart();
+        };
+
+        window.removeItem = (index) => {
+            let cart = JSON.parse(localStorage.getItem('ZorenbCart'));
+            cart.splice(index, 1);
+            localStorage.setItem('ZorenbCart', JSON.stringify(cart));
+            renderCart();
+        };
+
+        window.clearFullCart = () => {
+            if (confirm('Bạn có chắc chắn muốn xóa toàn bộ sản phẩm khỏi giỏ hàng?')) {
+                localStorage.removeItem('ZorenbCart');
+                renderCart();
+            }
+        };
+
+        renderCart();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZORENB | Chi Tiết Sản Phẩm</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/product-detail.css">
+    <script src="../java/animations.js" defer></script>
+</head>
+
+<body class="product-page">
+<div class="app-container">
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="logo">ZORENB</div>
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html" class="nav-link">Trang Chủ</a></li>
+                <li class="has-dropdown">
+                    <a href="../collections.html" class="nav-link">Bộ Sưu Tập</a>
+                    <ul class="sub-menu">
+                        <li><a href="../collections.html" class="sub-link">Mới Nhất</a></li>
+                        <li><a href="../collections.html" class="sub-link">Mùa Hè</a></li>
+                        <li><a href="../collections.html" class="sub-link">Mùa Xuân</a></li>
+                        <li><a href="../collections.html" class="sub-link">Mùa Đông</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link">Support Phong Cách</a></li>
+                <li><a href="#" class="nav-link">Liên Hệ</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="cart-icon-btn" id="header-cart-btn" aria-label="Giỏ hàng">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 01-8 0"></path>
+                </svg>
+                <span class="cart-badge" id="cart-count">0</span>
+            </button>
+            <a href="#" class="btn-auth login-link">Đăng Nhập</a>
+            <a href="#" class="btn-auth register-btn">Đăng Ký</a>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <nav class="pd-breadcrumb" aria-label="breadcrumb">
+        <a href="../index.html">Trang Chủ</a>
+        <span>›</span>
+        <a href="index.html#masterpiece">Masterpiece Gallery</a>
+        <span>›</span>
+        <span id="bc-product-name">Đang tải...</span>
+    </nav>
+
+    <!-- MAIN PRODUCT DETAIL -->
+    <main class="pd-main">
+
+        <!-- GALLERY -->
+        <section class="pd-gallery">
+            <div class="pd-thumbs" id="pd-thumbs"></div>
+            <div class="pd-main-img-wrap">
+                <img src="" alt="Sản phẩm" class="pd-main-img" id="pd-main-img">
+                <span class="pd-badge" id="pd-badge">Exclusive</span>
+            </div>
+        </section>
+
+        <!-- INFO PANEL -->
+        <section class="pd-info reveal">
+            <div class="pd-brand-row">
+                <span class="pd-brand-name" id="pd-brand"></span>
+                <span class="pd-origin-tag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+                    <span id="pd-origin">Made in France</span>
+                </span>
+            </div>
+
+            <h1 class="pd-product-name" id="pd-name">Đang tải...</h1>
+
+            <div class="pd-rating-row">
+                <span class="pd-stars" id="pd-stars">★★★★★</span>
+                <span class="pd-review-count" id="pd-reviews">(0 đánh giá)</span>
+                <span class="pd-divider">|</span>
+                <span class="pd-collection-tag" id="pd-collection"></span>
+            </div>
+
+            <div class="pd-price-block">
+                <span class="pd-price-usd" id="pd-price">$0.00</span>
+                <span class="pd-tax-note">Đã bao gồm thuế. Miễn phí vận chuyển toàn cầu.</span>
+            </div>
+
+            <div class="pd-divider-line"></div>
+
+            <div class="pd-meta-grid" id="pd-meta-grid"></div>
+
+            <div class="pd-divider-line"></div>
+
+            <!-- Màu sắc -->
+            <div class="pd-color-section">
+                <span class="pd-section-label">Màu sắc: <strong id="color-label">—</strong></span>
+                <div class="pd-colors" id="pd-colors"></div>
+            </div>
+
+            <!-- Kích cỡ -->
+            <div class="pd-size-section">
+                <span class="pd-section-label">Kích cỡ: <strong id="size-label">Chưa chọn</strong></span>
+                <div class="pd-sizes" id="pd-sizes"></div>
+                <a href="#" class="pd-size-guide">Hướng dẫn chọn size →</a>
+            </div>
+
+            <!-- Số lượng -->
+            <div class="pd-qty-section">
+                <span class="pd-section-label">Số lượng</span>
+                <div class="pd-qty-control">
+                    <button class="pd-qty-btn" id="qty-minus">−</button>
+                    <span class="pd-qty-value" id="qty-value">1</span>
+                    <button class="pd-qty-btn" id="qty-plus">+</button>
+                </div>
+            </div>
+
+            <!-- Nút hành động -->
+            <div class="pd-actions">
+                <button class="pd-btn-cart" id="btn-add-cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Thêm Vào Giỏ
+                </button>
+                <button class="pd-btn-buy" id="btn-buy-now">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><path d="M6 12h12"/></svg>
+                    Đặt Mua Ngay
+                </button>
+                <button class="pd-btn-wish" id="btn-wishlist" aria-label="Yêu thích">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </button>
+            </div>
+
+            <!-- Cam kết -->
+            <div class="pd-guarantees">
+                <div class="pd-guarantee-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>Xác thực Chính hãng 100%</span>
+                </div>
+                <div class="pd-guarantee-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    <span>Miễn phí vận chuyển toàn cầu</span>
+                </div>
+                <div class="pd-guarantee-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                    <span>Đổi trả trong vòng 30 ngày</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CHI TIẾT MỞ RỘNG -->
+    <section class="pd-details-full reveal">
+        <div class="pd-details-container">
+            <div class="pd-tabs">
+                <button class="pd-tab active" data-tab="desc">Mô Tả Sản Phẩm</button>
+                <button class="pd-tab" data-tab="material">Chất Liệu & Chăm Sóc</button>
+                <button class="pd-tab" data-tab="designer">Nhà Thiết Kế</button>
+            </div>
+            <div class="pd-tab-content active" id="tab-desc"></div>
+            <div class="pd-tab-content" id="tab-material"></div>
+            <div class="pd-tab-content" id="tab-designer"></div>
+        </div>
+    </section>
+
+    <!-- SẢN PHẨM LIÊN QUAN -->
+    <section class="pd-related reveal">
+        <div class="pd-details-container">
+            <h2 class="pd-related-title">Có Thể Bạn Quan Tâm</h2>
+            <div class="pd-related-grid" id="pd-related-grid"></div>
+        </div>
+    </section>
+
+    <!-- TOAST -->
+    <div class="pd-toast" id="pd-toast">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="toast-msg">Đã thêm vào giỏ!</span>
+    </div>
+
+</div>
+
+<script>
+// =============================================
+//  DATABASE: 8 Sản phẩm ZORENB Masterpiece
+// =============================================
+const PRODUCTS = [
+    {
+        id: 1,
+        name: 'The Onyx Masterpiece',
+        brand: 'ZORENB Atelier',
+        origin: 'Made in Vietnam',
+        price: '$12,500.00',
+        badge: 'Bespoke Only',
+        designer: 'Nguyễn Minh Khoa',
+        designerTitle: 'Founder & Creative Director — ZORENB',
+        designerBio: 'Tốt nghiệp Học viện Thời trang Paris năm 2003. Sau 10 năm tại Maison Margiela và Celine, ông trở về Việt Nam thành lập ZORENB năm 2015 với triết lý "Quiet Luxury" độc đáo, kết hợp giữa kỹ thuật Haute Couture châu Âu và tinh thần nghệ thuật truyền thống Á Đông.',
+        collection: 'ZORENB Heritage Series I',
+        reviews: 89,
+        stars: 5,
+        material: '100% Lụa Tơ Tằm Tự Nhiên — Dệt thủ công tại Hội An',
+        sku: 'ZRB-ONX-2023-HS1',
+        style: 'Haute Couture · Evening Gown',
+        mainImg: 'image/zorenb/masterpiece.jpg',
+        thumbs: ['image/zorenb/masterpiece.jpg', 'image/zorenb/hero.jpg', 'image/zorenb/product_01.jpg', 'image/zorenb/product_02.jpg'],
+        colors: [{ name: 'Onyx Black', hex: '#0a0a0a' }, { name: 'Midnight Blue', hex: '#1a1f3a' }, { name: 'Ivory', hex: '#F7F4EE' }],
+        sizes: ['XS', 'S', 'M', 'L'],
+        description: `<p>The Onyx Masterpiece là tác phẩm đỉnh cao trong di sản sáng tạo của ZORENB — một chiếc đầm dạ hội được đúc kết từ hàng nghìn giờ thêu tay bởi các nghệ nhân lành nghề nhất tại Xưởng Thêu truyền thống Hội An.</p><p>Mỗi chiếc chỉ được sản xuất theo đơn đặt hàng cá nhân hóa (Bespoke), đảm bảo rằng không có hai tác phẩm nào giống nhau trên thế giới. Quá trình sản xuất kéo dài tối thiểu 3 tháng.</p><ul><li>Hơn 2.000 giờ thêu thủ công mỗi chiếc</li><li>Đính kèm chứng chỉ xác thực và số sê-ri duy nhất</li><li>Dịch vụ tư vấn thiết kế 1-1 với Giám đốc Sáng tạo</li><li>Giao hàng trực tiếp bởi đại diện thương hiệu</li></ul>`,
+        materialDetail: `<div class="pd-material-grid"><div><strong>Chất liệu ngoài</strong><p>100% Lụa Tơ Tằm Tự Nhiên Grade 6A — Làng lụa Vạn Phúc, Hà Đông</p></div><div><strong>Lớp lót</strong><p>Organza Pháp đặc biệt nhập khẩu từ Lyon</p></div><div><strong>Thêu đính</strong><p>Chỉ thêu vàng 18k và hạt pha lê Swarovski</p></div><div><strong>Hướng dẫn bảo quản</strong><p>Dry Clean Only. Bảo quản trong hộp gỗ đặc biệt đi kèm sản phẩm.</p></div></div>`
+    },
+    {
+        id: 2,
+        name: 'The Rosewood Coat',
+        brand: 'Chanel',
+        origin: 'Made in France',
+        price: '$2,200.00',
+        badge: 'New Season',
+        designer: 'Virginie Viard',
+        designerTitle: 'Directrice Artistique — Chanel',
+        designerBio: 'Virginie Viard đã làm việc cùng Karl Lagerfeld trong hơn 30 năm tại Chanel trước khi đảm nhận vị trí Giám đốc Sáng tạo năm 2019. Phong cách của bà tinh tế, nữ tính, luôn đề cao sự thoải mái và thanh lịch đồng thời.',
+        collection: 'Chanel SS 2024',
+        reviews: 214,
+        stars: 5,
+        material: '85% Wool, 15% Cashmere — Dệt tại Đức',
+        sku: 'CHA-RWC-2024-SS',
+        style: 'Ready-to-Wear · Overcoat',
+        mainImg: 'image/chanel/product_02.jpg',
+        thumbs: ['image/chanel/product_02.jpg', 'image/chanel/product_01.jpg', 'image/dior/product_01.jpg', 'image/zorenb/hero.jpg'],
+        colors: [{ name: 'Rosewood', hex: '#C48B8B' }, { name: 'Beige Classique', hex: '#E8D9C0' }, { name: 'Noir', hex: '#111' }],
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        description: `<p>The Rosewood Coat là hiện thân của sự tối giản tinh tế đặc trưng Chanel — một chiếc áo khoác dáng dài được cắt may theo phong cách Couture nhưng hiện đại, phù hợp với người phụ nữ đương đại năng động.</p><p>Được lấy cảm hứng từ bảng màu tông hồng đất ấm áp của mùa thu Paris, The Rosewood Coat mang đến sự sang trọng bình thản — loại sang trọng không cần phô trương.</p><ul><li>Đường cắt quảng hợp theo cơ thể người châu Á</li><li>Lớp lót Cupro cao cấp mang lại cảm giác nhẹ nhàng</li><li>Nút bọc vải thủ công, khắc logo CC nhỏ tinh tế</li><li>Túi cài ẩn hai bên hông</li></ul>`,
+        materialDetail: `<div class="pd-material-grid"><div><strong>Chất liệu</strong><p>85% Wool Merino, 15% Cashmere — nhập từ Scotland</p></div><div><strong>Lớp lót</strong><p>100% Cupro — nhẹ và thoáng khí</p></div><div><strong>Hoàn thiện</strong><p>Đường may kép theo kỹ thuật Chanel truyền thống</p></div><div><strong>Bảo quản</strong><p>Dry Clean Only. Ủi mặt trái ở nhiệt độ thấp.</p></div></div>`
+    },
+    {
+        id: 3,
+        name: 'Stellar Leather Trench',
+        brand: 'Christian Dior',
+        origin: 'Made in Italy',
+        price: '$3,850.00',
+        badge: 'Limited Edition',
+        designer: 'Maria Grazia Chiuri',
+        designerTitle: 'Creative Director — Christian Dior Womenswear',
+        designerBio: 'Sinh năm 1964 tại Rome. Học tại Accademia di Costume e di Moda. Từng là Giám đốc Sáng tạo tại Valentino và Fendi. Gia nhập Dior năm 2016, là người phụ nữ đầu tiên giữ vị trí này trong lịch sử 70 năm thương hiệu.',
+        collection: 'Dior Fall/Winter 2024',
+        reviews: 127,
+        stars: 5,
+        material: '100% Da bê Italy (Nappa Leather)',
+        sku: 'DIOR-SLT-2024-FW',
+        style: 'Luxury Ready-to-Wear · Trench Coat',
+        mainImg: 'image/dior/product_01.jpg',
+        thumbs: ['image/dior/product_01.jpg', 'image/dior/product_02.jpg', 'image/chanel/product_01.jpg', 'image/zorenb/masterpiece.jpg'],
+        colors: [{ name: 'Stellar Black', hex: '#151515' }, { name: 'Caramel', hex: '#C4956A' }, { name: 'Ivory', hex: '#F5F0E8' }],
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        description: `<p>Stellar Leather Trench là tuyên ngôn táo bạo của Dior về sự hoàn hảo trong chất liệu da thuộc — kết hợp giữa silhouette cổ điển Trench Coat và chất liệu da bê Nappa Italy siêu mềm.</p><p>Được hoàn thiện bởi thợ đóng da lành nghề tại Florence với hơn 40 năm kinh nghiệm, từng đường may, từng mối ghép trên chiếc áo này đều là một tác phẩm nghệ thuật nhỏ.</p><ul><li>Da bê Nappa cao cấp, mềm như lụa</li><li>Khóa kéo YKK ẩn không hở</li><li>Lót lụa tơ tằm tự nhiên chống tĩnh điện</li><li>Đai thắt và khuy đồng mạ vàng 18k</li></ul>`,
+        materialDetail: `<div class="pd-material-grid"><div><strong>Chất liệu ngoài</strong><p>100% Da Bê Nappa Italy Grade A — thuộc tự nhiên, không hóa chất</p></div><div><strong>Lớp lót</strong><p>100% Raw Silk — lụa tơ tằm Hạng nhất</p></div><div><strong>Phụ liệu</strong><p>Đồng và thép không gỉ mạ vàng 18k</p></div><div><strong>Bảo quản</strong><p>Tránh nước, ẩm. Sử dụng kem dưỡng da chuyên dụng 2 tháng/lần.</p></div></div>`
+    },
+    {
+        id: 4,
+        name: 'The Platinum Suit',
+        brand: 'Christian Dior',
+        origin: 'Made in France',
+        price: '$4,200.00',
+        badge: 'Signature Piece',
+        designer: 'Maria Grazia Chiuri',
+        designerTitle: 'Creative Director — Christian Dior Womenswear',
+        designerBio: 'Sinh năm 1964 tại Rome. Học tại Accademia di Costume e di Moda. Từng là Giám đốc Sáng tạo tại Valentino và Fendi. Gia nhập Dior năm 2016, là người phụ nữ đầu tiên giữ vị trí này trong lịch sử 70 năm thương hiệu.',
+        collection: 'Dior Haute Couture SS 2024',
+        reviews: 98,
+        stars: 5,
+        material: 'Wool Crepe cao cấp pha Silk — Dệt tại Pháp',
+        sku: 'DIOR-PTS-2024-HC',
+        style: 'Haute Couture · Power Suit',
+        mainImg: 'image/dior/product_02.jpg',
+        thumbs: ['image/dior/product_02.jpg', 'image/dior/product_01.jpg', 'image/zorenb/product_01.jpg', 'image/chanel/product_01.jpg'],
+        colors: [{ name: 'Platinum', hex: '#E5E4E2' }, { name: 'Charcoal', hex: '#36454F' }, { name: 'Champagne', hex: '#C5A059' }],
+        sizes: ['XS', 'S', 'M', 'L'],
+        description: `<p>The Platinum Suit là một tác phẩm kiến trúc trang phục — nơi đường cắt may quyết định mọi thứ. Được thiết kế trong bộ sưu tập Haute Couture mùa xuân hè 2024, đây là hiện thân của khái niệm "Power Dressing" phiên bản Dior.</p><p>Mỗi bộ vest được may theo số đo của khách hàng tại Atelier Paris, với ít nhất 3 buổi thử đồ để đảm bảo sự hoàn hảo tuyệt đối về form dáng.</p><ul><li>May đo theo số đo cá nhân tại Paris</li><li>Đệm vai có thể tháo rời tùy theo phong cách</li><li>Lớp cài bên trong chống nhăn, giữ form suốt 12 giờ</li><li>Khuy bạch kim thật được khắc số sê-ri</li></ul>`,
+        materialDetail: `<div class="pd-material-grid"><div><strong>Chất liệu</strong><p>70% Wool Crepe, 30% Raw Silk — đặt dệt riêng tại Normandie</p></div><div><strong>Lớp lót</strong><p>Bemberg Cupro — mát, nhẹ, chống tĩnh điện tuyệt vời</p></div><div><strong>Hoàn thiện</strong><p>Đường may mũ tay dọc từng phân đoạn, kiểm tra bởi thợ cả 30 năm</p></div><div><strong>Bảo quản</strong><p>Dry Clean Only. Treo trên mắc gỗ tự nhiên, tránh ánh sáng trực tiếp.</p></div></div>`
+    },
+    {
+        id: 5,
+        name: 'Emerald Silk Gown',
+        brand: 'ZORENB',
+        origin: 'Made in Vietnam',
+        price: '$5,800.00',
+        badge: 'Artisan Edition',
+        designer: 'Nguyễn Minh Khoa',
+        designerTitle: 'Founder & Creative Director — ZORENB',
+        designerBio: 'Tốt nghiệp Học viện Thời trang Paris năm 2003. Sau 10 năm tại Maison Margiela và Celine, ông trở về Việt Nam thành lập ZORENB năm 2015 với triết lý "Quiet Luxury" độc đáo.',
+        collection: 'ZORENB Emerald Collection 2024',
+        reviews: 143,
+        stars: 5,
+        material: '100% Raw Silk — Lụa tơ tằm thô Hội An',
+        sku: 'ZRB-ESG-2024-EC',
+        style: 'Evening Gown · Floor-Length',
+        mainImg: 'image/zorenb/product_01.jpg',
+        thumbs: ['image/zorenb/product_01.jpg', 'image/zorenb/masterpiece.jpg', 'image/zorenb/product_02.jpg', 'image/zorenb/hero.jpg'],
+        colors: [{ name: 'Emerald', hex: '#50C878' }, { name: 'Deep Forest', hex: '#1B4D2E' }, { name: 'Jade', hex: '#00A36C' }],
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        description: `<p>Emerald Silk Gown là bài thơ bằng lụa — Một chiếc đầm dạ hội trải dài chạm đất, được dệt từng sợi tơ tự nhiên trên những khung cửi gỗ trăm năm tuổi ở Làng Lụa Hội An.</p><p>Màu xanh ngọc emerald huyền bí được nhuộm hoàn toàn bằng nguyên liệu thiên nhiên từ cây chàm và lá tươi trong rừng nguyên sinh Tây Nguyên — không hóa chất, không thuốc nhuộm công nghiệp.</p><ul><li>Nhuộm màu organic 100% từ thực vật tự nhiên</li><li>Tay áo được dệt riêng, đính bằng tay từng điểm</li><li>Vạt đuôi dài 120cm với xẻ tà tinh tế</li><li>Kèm khăn choàng lụa cùng màu</li></ul>`,
+        materialDetail: `<div class="pd-material-grid"><div><strong>Chất liệu</strong><p>100% Raw Silk Grade 6A — Hợp tác xã dệt lụa Hội An thành lập 1965</p></div><div><strong>Màu nhuộm</strong><p>100% Organic Dye từ cây chàm Tây Nguyên và lá xanh tự nhiên</p></div><div><strong>Đính kết</strong><p>Hạt ngọc trai nước ngọt tự nhiên kết thủ công</p></div><div><strong>Bảo quản</strong><p>Giặt tay nhẹ nhàng với nước mát. Phơi trong bóng râm. Không vắt xoắn.</p></div></div>`
+    },
+    {
+        id: 6,
+        name: 'Midnight Velvet Clutch',
+        brand: 'ZORENB',
+        origin: 'Made in Vietnam',
+        price: '$1,950.00',
+        badge: 'Handcrafted',
+        designer: 'Trần Thu Hằng',
+        designerTitle: 'Lead Accessories Designer — ZORENB',
+        designerBio: 'Tốt nghiệp trường Thiết kế FIT New York. Từng làm việc tại bộ phận phụ kiện của Bottega Veneta Milan 5 năm. Trở về Việt Nam năm 2020 và gia nhập ZORENB để phát triển dòng túi xách cao cấp mang bản sắc Á Đông.',
+        collection: 'ZORENB Evening Accessories 2024',
+        reviews: 76,
+        stars: 5,
+        material: 'Nhung Ý (Italian Velvet) + Gỗ Hương Khảm Trai',
+        sku: 'ZRB-MVC-2024-EA',
+        style: 'Evening Clutch · Handcrafted',
+        mainImg: 'image/zorenb/product_02.jpg',
+        thumbs: ['image/zorenb/product_02.jpg', 'image/zorenb/product_01.jpg', 'image/zorenb/masterpiece.jpg', 'image/zorenb/hero.jpg'],
+        colors: [{ name: 'Midnight Black', hex: '#0a0a14' }, { name: 'Deep Burgundy', hex: '#4A0011' }, { name: 'Sapphire', hex: '#0F52BA' }],
+        sizes: ['One Size'],
+        description: `<p>Midnight Velvet Clutch là tuyên ngôn thầm lặng nhất về sự xa xỉ — chiếc clutch được bọc nhung mịn Ý với khung gỗ hương nguyên khối khảm xà cừ theo kỹ thuật thủ công truyền thống của nghệ nhân Huế.</p><p>Bên trong mỗi chiếc túi là một vũ trụ nhỏ: lớp lót lụa thêu tên chủ nhân, gương mini khung bạc và móc khóa hình hoa sen tinh xảo.</p><ul><li>Khung gỗ hương 100% nguyên khối, khắc tay</li><li>Khảm xà cừ theo nghệ thuật truyền thống Huế</li><li>Lớp lót lụa thêu tên khách hàng theo yêu cầu</li><li>Đi kèm dây xích bạc có thể tháo rời</li></ul>`,
+        materialDetail: `<div class="pd-material-grid"><div><strong>Bên ngoài</strong><p>Nhung Ý 100% cao cấp — nhập từ Biella, Piedmont, Italy</p></div><div><strong>Khung</strong><p>Gỗ Hương (Rosewood) nguyên khối, khảm xà cừ tự nhiên</p></div><div><strong>Lớp lót</strong><p>Lụa Tơ Tằm thêu tay, có thể cá nhân hóa theo yêu cầu</p></div><div><strong>Phụ kiện</strong><p>Dây xích Bạc 925 kết với hạt ngọc trai nước ngọt tự nhiên</p></div></div>`
+    },
+    {
+        id: 7,
+        name: 'Golden Era Capsule',
+        brand: 'ZORENB',
+        origin: 'Made in Vietnam',
+        price: '$8,200.00',
+        badge: 'Collectors Edition',
+        designer: 'Nguyễn Minh Khoa',
+        designerTitle: 'Founder & Creative Director — ZORENB',
+        designerBio: 'Tốt nghiệp Học viện Thời trang Paris năm 2003. Tác phẩm Golden Era Capsule là bộ sưu tập kỷ niệm 10 năm thành lập ZORENB — được xem là tác phẩm vĩ đại nhất trong sự nghiệp thiết kế của ông cho đến nay.',
+        collection: 'ZORENB 10th Anniversary — Golden Era',
+        reviews: 52,
+        stars: 5,
+        material: 'Gấm Gold Thread — Chỉ vàng 24k dệt thủ công',
+        sku: 'ZRB-GEC-2025-10Y',
+        style: 'Collector\'s Couture · Statement Piece',
+        mainImg: 'image/zorenb/hero.jpg',
+        thumbs: ['image/zorenb/hero.jpg', 'image/zorenb/masterpiece.jpg', 'image/zorenb/product_01.jpg', 'image/zorenb/product_02.jpg'],
+        colors: [{ name: 'Imperial Gold', hex: '#C5A059' }, { name: 'Rose Gold', hex: '#B76E79' }, { name: 'Platinum', hex: '#E5E4E2' }],
+        sizes: ['Bespoke'],
+        description: `<p>Golden Era Capsule là đỉnh cao trong hành trình 10 năm xây dựng ZORENB — một bộ trang phục Couture được dệt từ chỉ vàng 24 karat thật, theo kỹ thuật dệt gấm truyền thống của triều đình Huế kết hợp cùng cấu trúc hiện đại.</p><p>Đây là bộ sưu tập giới hạn chỉ 10 tác phẩm trên toàn thế giới, mỗi bộ được đánh số và ký tên bởi chính Nguyễn Minh Khoa. Không bán đại trà — chỉ phân phối qua hệ thống khách hàng VIP.</p><ul><li>Chỉ 10 bộ toàn cầu, đánh số từ 01/10 đến 10/10</li><li>Gấm dệt chỉ vàng 24k thật theo công nghệ Huế cổ</li><li>Kèm hộp bảo quản bằng gỗ gụ và chứng chỉ COA</li><li>Dịch vụ chăm sóc trọn đời miễn phí</li></ul>`,
+        materialDetail: `<div class="pd-material-grid"><div><strong>Chất liệu chính</strong><p>Gấm chỉ vàng 24k — dệt thủ công tại Làng nghề Thừa Thiên Huế</p></div><div><strong>Lớp đệm</strong><p>Tơ tằm hoàng gia, nhập khẩu từ Kyoto, Nhật Bản</p></div><div><strong>Đính kết</strong><p>Kim cương tổng hợp (Lab-grown Diamond) và đá ngọc bích thiên nhiên</p></div><div><strong>Bảo quản</strong><p>Bảo quản trong hộp gỗ gụ chân không đi kèm. Bảo hành vĩnh viễn.</p></div></div>`
+    },
+    {
+        id: 8,
+        name: 'The Obsidian Legacy',
+        brand: 'Christian Dior',
+        origin: 'Made in France',
+        price: '$6,500.00',
+        badge: 'Heritage Edition',
+        designer: 'Maria Grazia Chiuri',
+        designerTitle: 'Creative Director — Christian Dior Womenswear',
+        designerBio: 'Sinh năm 1964 tại Rome. Học tại Accademia di Costume e di Moda. Từng là Giám đốc Sáng tạo tại Valentino và Fendi. Gia nhập Dior năm 2016 — người phụ nữ đầu tiên dẫn dắt Dior trong 70 năm lịch sử.',
+        collection: 'Dior Heritage Edition — FW 2024',
+        reviews: 161,
+        stars: 5,
+        material: 'Crepe de Chine đặc biệt — Tơ tằm cao cấp Pháp',
+        sku: 'DIOR-OBL-2024-HE',
+        style: 'Haute Couture · Signature Dress',
+        mainImg: 'image/dior/product_01.jpg',
+        thumbs: ['image/dior/product_01.jpg', 'image/dior/product_02.jpg', 'image/zorenb/masterpiece.jpg', 'image/chanel/product_01.jpg'],
+        colors: [{ name: 'Obsidian', hex: '#1a1a1a' }, { name: 'Deep Navy', hex: '#1B2A4A' }, { name: 'Bordeaux', hex: '#5C0032' }],
+        sizes: ['XS', 'S', 'M', 'L'],
+        description: `<p>The Obsidian Legacy là di sản Obsidian của Dior — lấy cảm hứng từ đá núi lửa huyền bí, đây là chiếc váy mang trong mình chất liệu thời gian và sự bất diệt của nghệ thuật Haute Couture Pháp.</p><p>Được hoàn thiện toàn bộ tại Atelier 30 Avenue Montaigne, Paris, mỗi chiếc mang theo số giờ thợ lành nghề đã đổ xuống để từng đường viền, từng lớp vải đều đạt đến độ hoàn hảo không thể phủ nhận.</p><ul><li>Hoàn toàn may tay tại Atelier Paris</li><li>Thêu hoa Lily của Dior bằng sợi vàng 18k ở tà áo</li><li>Nội thất áo có túi ẩn với khóa từ</li><li>Đi kèm phụ kiện nước hoa Dior Miss Dior 100ml bản đặc biệt</li></ul>`,
+        materialDetail: `<div class="pd-material-grid"><div><strong>Chất liệu</strong><p>Crepe de Chine tơ tằm 100% — dệt đặc biệt tại Lyon</p></div><div><strong>Thêu đính</strong><p>Sợi vàng 18k và hạt pha lê Swarovski tinh thể không màu</p></div><div><strong>Lớp lót</strong><p>Lụa Organza nhẹ, chống tĩnh điện hoàn toàn</p></div><div><strong>Bảo quản</strong><p>Dry Clean Only tại cơ sở uy tín. Treo thẳng, tránh gấp nếp tại điểm thêu.</p></div></div>`
+    }
+];
+
+// =============================================
+//  ĐỌC DỮ LIỆU TỪ URL VÀ LOCALSTORAGE (DYNAMIC ROUTER)
+// =============================================
+const params = new URLSearchParams(window.location.search);
+const id = 7;
+let product = PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
+
+// Ghi đè thông tin bằng Dữ liệu động từ lưới sản phẩm (Collections)
+const dynamicData = null; // Disabled in static files
+if (dynamicData) {
+    try {
+        const pState = JSON.parse(dynamicData);
+        product.name = pState.name || product.name;
+        product.price = pState.price || product.price;
+        product.brand = pState.brand || product.brand;
+        product.origin = pState.origin || product.origin;
+        product.material = pState.material || product.material;
+        product.designer = pState.designer || product.designer;
+        if (pState.image === 'HASH_PLACEHOLDER') {
+             product.mainImg = '#';
+             product.thumbs = ['#'];
+        }
+    } catch(e) {
+        console.warn('Lỗi đọc dữ liệu động', e);
+    }
+}
+
+// Cập nhật tiêu đề trang
+document.title = `ZORENB | ${product.name}`;
+
+// Breadcrumb
+document.getElementById('bc-product-name').textContent = product.name;
+
+// Brand, origin, tên
+document.getElementById('pd-brand').textContent = product.brand;
+document.getElementById('pd-origin').textContent = product.origin;
+document.getElementById('pd-name').textContent = product.name;
+document.getElementById('pd-badge').textContent = product.badge;
+
+// Rating
+document.getElementById('pd-stars').textContent = '★'.repeat(product.stars) + '☆'.repeat(5 - product.stars);
+document.getElementById('pd-reviews').textContent = `(${product.reviews} đánh giá)`;
+document.getElementById('pd-collection').textContent = `Collection: ${product.collection}`;
+
+// Giá
+document.getElementById('pd-price').textContent = product.price;
+
+// Meta grid
+document.getElementById('pd-meta-grid').innerHTML = `
+    <div class="pd-meta-item"><span class="pd-meta-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg> Nhà thiết kế</span><span class="pd-meta-value">${product.designer}</span></div>
+    <div class="pd-meta-item"><span class="pd-meta-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg> Thương hiệu</span><span class="pd-meta-value">${product.brand}</span></div>
+    <div class="pd-meta-item"><span class="pd-meta-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg> Xuất xứ</span><span class="pd-meta-value">${product.origin}</span></div>
+    <div class="pd-meta-item"><span class="pd-meta-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Chất liệu</span><span class="pd-meta-value">${product.material}</span></div>
+    <div class="pd-meta-item"><span class="pd-meta-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg> Phong cách</span><span class="pd-meta-value">${product.style}</span></div>
+    <div class="pd-meta-item"><span class="pd-meta-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg> Mã SKU</span><span class="pd-meta-value">${product.sku}</span></div>
+`;
+
+// Gallery thumbs
+const thumbsContainer = document.getElementById('pd-thumbs');
+product.thumbs.forEach((src, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'pd-thumb' + (i === 0 ? ' active' : '');
+    btn.dataset.img = src;
+    
+    // Hỗ trợ hiển thị dấu thăng placeholder
+    if (src === '#') {
+        btn.innerHTML = `<div style="display:flex; justify-content:center; align-items:center; background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.2); height:10rem; width:100%; font-family:monospace; font-size:3rem; border:1px solid rgba(255,255,255,0.1);">#</div>`;
+    } else {
+        btn.innerHTML = `<img src="${src}" alt="View ${i+1}">`;
+    }
+    
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        
+        const mainImgWrap = document.querySelector('.pd-main-img-wrap');
+        const badge = document.getElementById('pd-badge');
+        if (this.dataset.img === '#') {
+           mainImgWrap.innerHTML = '<div id="pd-main-img" style="display:flex; justify-content:center; align-items:center; background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.15); width:100%; height:100%; min-height:80vh; font-size:15rem; font-family:monospace;">#</div>';
+           if (badge) mainImgWrap.appendChild(badge);
+        } else {
+           mainImgWrap.innerHTML = '<img src="' + this.dataset.img + '" alt="Sản phẩm" class="pd-main-img" id="pd-main-img">';
+           if (badge) mainImgWrap.appendChild(badge);
+        }
+    });
+    thumbsContainer.appendChild(btn);
+});
+
+// Render initial main image
+const mainImgWrap = document.querySelector('.pd-main-img-wrap');
+const badge = document.getElementById('pd-badge');
+if (product.mainImg === '#') {
+   mainImgWrap.innerHTML = '<div id="pd-main-img" style="display:flex; justify-content:center; align-items:center; background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.15); width:100%; height:100%; min-height:80vh; font-size:15rem; font-family:monospace;">#</div>';
+   if (badge) mainImgWrap.appendChild(badge);
+} else {
+   mainImgWrap.innerHTML = '<img src="' + product.mainImg + '" alt="Sản phẩm" class="pd-main-img" id="pd-main-img">';
+   if (badge) mainImgWrap.appendChild(badge);
+}
+
+// Colors
+const colorsContainer = document.getElementById('pd-colors');
+document.getElementById('color-label').textContent = product.colors[0].name;
+product.colors.forEach((color, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'pd-color-swatch';
+    btn.style.background = color.hex;
+    btn.style.border = i === 0 ? '3px solid var(--clr-gold)' : '1px solid rgba(255,255,255,0.2)';
+    btn.title = color.name;
+    btn.dataset.color = color.name;
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.pd-color-swatch').forEach(s => s.style.border = '1px solid rgba(255,255,255,0.2)');
+        this.style.border = '3px solid var(--clr-gold)';
+        document.getElementById('color-label').textContent = color.name;
+    });
+    colorsContainer.appendChild(btn);
+});
+
+// Sizes
+const sizesContainer = document.getElementById('pd-sizes');
+product.sizes.forEach((size, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'pd-size-btn' + (i === 0 ? ' active' : '');
+    btn.dataset.size = size;
+    btn.textContent = size;
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.pd-size-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById('size-label').textContent = size;
+    });
+    sizesContainer.appendChild(btn);
+});
+document.getElementById('size-label').textContent = product.sizes[0];
+
+// Tab content
+document.getElementById('tab-desc').innerHTML = product.description;
+document.getElementById('tab-material').innerHTML = product.materialDetail;
+document.getElementById('tab-designer').innerHTML = `
+    <div class="pd-designer-profile">
+        <div class="pd-designer-info">
+            <h3>${product.designer}</h3>
+            <span class="pd-designer-title">${product.designerTitle}</span>
+            <p>${product.designerBio}</p>
+        </div>
+    </div>`;
+
+// Related products (3 sản phẩm khác)
+const related = PRODUCTS.filter(p => p.id !== product.id).slice(0, 3);
+const relatedGrid = document.getElementById('pd-related-grid');
+related.forEach(p => {
+    relatedGrid.innerHTML += `
+    <a href="${p.id}" class="pd-related-card">
+        <div class="pd-related-img-wrap">
+            <img src="${p.mainImg}" alt="${p.name}">
+        </div>
+        <div class="pd-related-info">
+            <span class="pd-related-brand">${p.brand}</span>
+            <h4 class="pd-related-name">${p.name}</h4>
+            <span class="pd-related-price">${p.price}</span>
+        </div>
+    </a>`;
+});
+
+// Hamburger
+document.getElementById('hamburger-btn').addEventListener('click', function() {
+    document.getElementById('nav-menu').classList.toggle('active');
+    this.classList.toggle('active');
+});
+
+// Toast
+let cartCount = 0;
+function showToast(msg) {
+    const toast = document.getElementById('pd-toast');
+    document.getElementById('toast-msg').textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// Qty
+let qty = 1;
+document.getElementById('qty-plus').addEventListener('click', () => {
+    qty = Math.min(qty + 1, 10);
+    document.getElementById('qty-value').textContent = qty;
+});
+document.getElementById('qty-minus').addEventListener('click', () => {
+    qty = Math.max(qty - 1, 1);
+    document.getElementById('qty-value').textContent = qty;
+});
+
+// Thêm giỏ
+document.getElementById('btn-add-cart').addEventListener('click', () => {
+    cartCount += qty;
+    document.getElementById('cart-count').textContent = cartCount;
+    const size = document.querySelector('.pd-size-btn.active')?.dataset.size || '—';
+    showToast(`✓ Đã thêm ${qty} × ${product.name} — Size ${size}`);
+});
+
+// Đặt mua ngay
+document.getElementById('btn-buy-now').addEventListener('click', () => {
+    window.location.href = 'thankyou.html';
+});
+
+// Yêu thích
+document.getElementById('btn-wishlist').addEventListener('click', function() {
+    this.classList.toggle('wished');
+    showToast(this.classList.contains('wished') ? `♥ ${product.name} đã thêm vào danh sách yêu thích` : '♡ Đã bỏ khỏi yêu thích');
+});
+
+// Tab chuyển đổi
+document.querySelectorAll('.pd-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.pd-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.pd-tab-content').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+    });
+});
+</script>
+
+<!-- FLOATING CSKH PHONE WIDGET - Đặt ở cuối body để nằm trên mọi thứ -->
+<a href="tel:18009090" class="support-ring-btn" id="support-widget" aria-label="Gọi Hỗ Trợ 18009090">
+    <span class="support-ring-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.07 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path>
+        </svg>
+    </span>
+    <span class="support-ring-text">
+        <span class="support-ring-char" style="--i:0">C</span><span class="support-ring-char" style="--i:1">S</span><span class="support-ring-char" style="--i:2">K</span><span class="support-ring-char" style="--i:3">H</span><span class="support-ring-char" style="--i:4">&nbsp;</span><span class="support-ring-char" style="--i:5">1</span><span class="support-ring-char" style="--i:6">8</span><span class="support-ring-char" style="--i:7">0</span><span class="support-ring-char" style="--i:8">0</span><span class="support-ring-char" style="--i:9">9</span><span class="support-ring-char" style="--i:10">0</span><span class="support-ring-char" style="--i:11">9</span><span class="support-ring-char" style="--i:12">0</span>
+    </span>
+</a>
+
+</body>
+</html>

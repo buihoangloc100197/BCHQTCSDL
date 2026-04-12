@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZORENB | The Pinnacle of Luxury Fashion Heritage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Hệ thống chuyển động (Animation System) -->
+    <script src="java/animations.js" defer></script>
+</head>
+
+<body class="home-page">
+
+    <div class="app-container">
+
+        <!-- HEADER -->
+        <header class="site-header">
+            <div class="logo">ZORENB</div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                    <li class="has-dropdown">
+                        <a href="collections.html" class="nav-link">Bộ Sưu Tập</a>
+                        <ul class="sub-menu">
+                            <li><a href="collections.html" class="sub-link">Mới Nhất</a></li>
+                            <li><a href="collections.html" class="sub-link">Mùa Hè</a></li>
+                            <li><a href="collections.html" class="sub-link">Mùa Xuân</a></li>
+                            <li><a href="collections.html" class="sub-link">Mùa Đông</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-link">Support Phong Cách </a></li>
+                    <li><a href="#" class="nav-link">Liên Hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="cart-icon-btn" onclick="window.location.href='cart.html'" aria-label="Giỏ hàng">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 01-8 0"></path>
+                    </svg>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </button>
+                <a href="#" class="btn-auth login-link">Đăng Nhập</a>
+                <a href="#" class="btn-auth register-btn">Đăng Ký</a>
+            </div>
+
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </header>
+
+        <!-- HERO SECTION: Băng chuyền ảnh Cinematic -->
+        <section class="image-hero" id="hero-slider">
+            <div class="hero-overlay"></div>
+
+            <!-- Tập hợp các khung hình Slide, bọc trong Dải Phù Bảng (Track) -->
+            <div class="hero-slides-container">
+                <div class="hero-track" id="hero-track">
+                    <div class="hero-slide">
+                        <img src="image/zorenb/hero.jpg" alt="ZORENB Heritage 1" class="hero-bg">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="image/louis_vuitton/product_01.jpg" alt="Luxury Heritage 2" class="hero-bg">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="image/chanel/product_01.jpg" alt="Luxury Heritage 3" class="hero-bg">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="image/dior/product_01.jpg" alt="Luxury Heritage 4" class="hero-bg">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="image/dior/product_02.jpg" alt="Luxury Heritage 5" class="hero-bg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Các nút điều hướng Trái/Phải (</>) -->
+            <button class="hero-nav-btn prev-btn" id="hero-prev" aria-label="Previous Slide">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="hero-nav-btn next-btn" id="hero-next" aria-label="Next Slide">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Nội dung chữ thay đổi theo từng slide -->
+            <div class="hero-content" id="hero-content">
+                <h1 class="hero-brand" id="hero-brand">ZORENB</h1>
+                <h3 class="hero-slogan-main" id="hero-slogan-main"></h3>
+                <p class="hero-slogan-sub" id="hero-slogan-sub"></p>
+            </div>
+        </section>
+
+        <main class="site-main">
+            <section class="heritage-narrative reveal"> <!-- Hiệu ứng hiện hình khi kể chuyện di sản -->
+                <div class="section-container" style="display: flex; align-items: center; gap: 15rem;">
+                    <!-- Bọc nội dung di sản để giới hạn độ rộng phù hợp -->
+                    <div class="heritage-text">
+                        <span class="heritage-label">Since 1997</span>
+                        <h2 class="heritage-title">The ZORENB Legacy</h2>
+                        <p class="heritage-desc">
+                            "Thời trang không chỉ là những gì chúng ta mặc, mà là cách chúng ta im lặng định nghĩa chính
+                            mình giữa thế giới ồn ào."
+                        </p>
+                        <p style="color: #666; font-size: 1.6rem; line-height: 1.8; margin-bottom: 4rem;">
+                            Khởi đầu từ một cửa hàng nhỏ tại 1 thành phố ánh sáng nhộn nhịp Biên Hòa năm 2023, ZORENB đã
+                            dành hơn ba năm
+                            để hoàn thiện triết lý 'Quiet Luxury'.
+                            Mỗi đường kim mũi chỉ là một lời cam kết về sự tỉ mỉ, mỗi chất liệu vải là một cuộc tìm kiếm
+                            sự hoàn hảo. Chúng tôi tin rằng trang phục cao cấp nhất là trang phục tôn vinh linh hồn
+                            người mặc một cách tự nhiên và tinh tế nhất.
+                        </p>
+                        <a href="#" class="heritage-cta">Khám Phá Câu Chuyện </a>
+                    </div>
+                    <div class="heritage-image">
+                        <img src="image/zorenb/hero.jpg" alt="ZORENB Atelier History">
+                        <!-- Ảnh di sản Atelier từ thư mục nội bộ image/ -->
+                    </div>
+                </div>
+            </section>
+            <!-- 1. MASTERPIECE SHOWCASE: Những siêu tác phẩm đắt giá -->
+            <section class="masterpiece-showcase reveal"> <!-- Thêm hiệu ứng trượt lên khi cuộn tới -->
+                <div class="section-container"> <!-- Bọc nội dung để thu nhỏ kích thước theo tỷ lệ Editorial -->
+                    <span class="section-label">Exquisite Curation</span>
+                    <h2 class="section-title">The Masterpiece Gallery</h2>
+
+                    <div class="masterpiece-grid">
+
+                        <!-- Tác phẩm 1: The Onyx Masterpiece -->
+                        <div class="masterpiece-item">
+                            <img src="image/zorenb/masterpiece.jpg" alt="The Onyx Masterpiece" class="masterpiece-img">
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">The Onyx Masterpiece</h4>
+                                <p class="item-price">$12,500.00 — Bespoke Only</p>
+                                <a href="products/onyx-masterpiece.html" class="btn-details">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+
+                        <!-- Tác phẩm 2: The Rosewood Coat -->
+                        <div class="masterpiece-item">
+                            <img src="image/chanel/product_02.jpg" alt="The Rosewood Coat" class="masterpiece-img">
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">The Rosewood Coat</h4>
+                                <p class="item-price">$2,200.00</p>
+                                <a href="products/rosewood-coat.html" class="btn-details">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+
+                        <!-- Tác phẩm 3: Stellar Leather Trench -->
+                        <div class="masterpiece-item">
+                            <img src="image/dior/product_01.jpg" alt="Stellar Leather Trench" class="masterpiece-img">
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Stellar Leather Trench</h4>
+                                <p class="item-price">$3,850.00</p>
+                                <a href="products/stellar-leather-trench.html" class="btn-details">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+
+                        <!-- Tác phẩm 4: The Platinum Suit -->
+                        <div class="masterpiece-item">
+                            <img src="image/dior/product_02.jpg" alt="The Platinum Suit" class="masterpiece-img">
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">The Platinum Suit</h4>
+                                <p class="item-price">$4,200.00</p>
+                                <a href="products/platinum-suit.html" class="btn-details">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+
+                        <!-- Tác phẩm 5: Emerald Silk Gown -->
+                        <div class="masterpiece-item">
+                            <img src="image/zorenb/product_01.jpg" alt="Emerald Silk Gown" class="masterpiece-img">
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Emerald Silk Gown</h4>
+                                <p class="item-price">$5,800.00</p>
+                                <a href="products/emerald-silk-gown.html" class="btn-details">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+
+                        <!-- Tác phẩm 6: Midnight Velvet Clutch -->
+                        <div class="masterpiece-item">
+                            <img src="image/zorenb/product_02.jpg" alt="Midnight Velvet Clutch" class="masterpiece-img">
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Midnight Velvet Clutch</h4>
+                                <p class="item-price">$1,950.00</p>
+                                <a href="products/midnight-velvet-clutch.html" class="btn-details">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+
+                        <!-- Tác phẩm 7: Golden Era Capsule -->
+                        <div class="masterpiece-item">
+                            <img src="image/zorenb/hero.jpg" alt="Golden Era Capsule" class="masterpiece-img">
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">Golden Era Capsule</h4>
+                                <p class="item-price">$8,200.00</p>
+                                <a href="products/golden-era-capsule.html" class="btn-details">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+
+                        <!-- Tác phẩm 8: The Obsidian Legacy -->
+                        <div class="masterpiece-item">
+                            <img src="image/dior/product_01.jpg" alt="The Obsidian Legacy" class="masterpiece-img">
+                            <div class="masterpiece-info">
+                                <h4 class="item-name">The Obsidian Legacy</h4>
+                                <p class="item-price">$6,500.00</p>
+                                <a href="products/obsidian-legacy.html" class="btn-details">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDITORIAL QUOTE: Điểm dừng chân nghệ thuật mang hơi thở di sản -->
+            <section class="editorial-quote reveal"> <!-- Sử dụng hiệu ứng hiện hình cho đoạn văn bản ngẫu hứng -->
+                <div class="section-container">
+                    <p class="quote-text">
+                        "Sự sang trọng không phải là sự phô trương, mà là sự tinh tế trong những điều lặng lẽ nhất."
+                    </p>
+                    <span class="quote-author">ZORENB Collective — Paris 1997</span>
+                </div>
+            </section>
+
+            <!-- 2. BEST SELLERS: Các tác phẩm được ưa chuộng -->
+            <!-- 2. BEST SELLERS: Dạng Lưới So Le (Staggered Grid) -->
+            <section class="staggered-section reveal" id="best-sellers">
+                <div class="section-container staggered-container">
+
+                    <!-- Tiêu đề Canh giữa chuẩn mảng -->
+                    <div class="staggered-header">
+                        <h2 class="staggered-title">
+                            <span class="title-luxury">LUXURY</span> FASHION AT<br>
+                            AN UNEXPECTED <em>PRICE!</em>
+                        </h2>
+                        <a href="#" class="staggered-link">SHOP THE COLLECTIONS</a>
+                    </div>
+
+                    <!-- Lưới 4 Cột -->
+                    <div class="staggered-grid">
+
+                        <!-- Cột 1 -->
+                        <div class="staggered-col">
+                            <a href="#" class="staggered-card">
+                                <img src="image/zorenb/product_01.jpg" alt="Womenswear">
+                                <span class="card-label">WOMENSWEAR</span>
+                            </a>
+                            <a href="#" class="staggered-card">
+                                <img src="image/chanel/product_02.jpg" alt="Bottoms">
+                                <span class="card-label">BOTTOMS</span>
+                            </a>
+                        </div>
+
+                        <!-- Cột 2 (Bị đẩy xuống so le) -->
+                        <div class="staggered-col shifted">
+                            <a href="#" class="staggered-card">
+                                <img src="image/dior/product_02.jpg" alt="Bespoke Suits">
+                                <span class="card-label">BESPOKE SUITS</span>
+                            </a>
+                            <a href="#" class="staggered-card">
+                                <img src="image/zorenb/masterpiece.jpg" alt="Outerwear">
+                                <span class="card-label">OUTERWEAR</span>
+                            </a>
+                        </div>
+
+                        <!-- Cột 3 (Bị đẩy xuống so le) -->
+                        <div class="staggered-col shifted">
+                            <a href="#" class="staggered-card">
+                                <img src="image/louis_vuitton/product_01.jpg" alt="Menswear">
+                                <span class="card-label">MENSWEAR</span>
+                            </a>
+                            <a href="#" class="staggered-card">
+                                <img src="image/dior/product_01.jpg" alt="100% Leather">
+                                <span class="card-label">100% LEATHER</span>
+                            </a>
+                        </div>
+
+                        <!-- Cột 4 -->
+                        <div class="staggered-col">
+                            <a href="#" class="staggered-card">
+                                <img src="image/chanel/product_01.jpg" alt="Daily Essentials">
+                                <span class="card-label">DAILY ESSENTIALS</span>
+                            </a>
+                            <a href="#" class="staggered-card">
+                                <img src="image/zorenb/product_02.jpg" alt="Accessories">
+                                <span class="card-label">ACCESSORIES</span>
+                            </a>
+                        </div>
+
+                        <!-- Nút Next Carousel -->
+                        <button class="staggered-nav-next">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 5L16 12L9 19" stroke="black" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. HERITAGE NARRATIVE: Lịch sử ZORENB -->
+
+        </main>
+
+        <!-- QUICK CHECKOUT MODAL: Cửa sổ thanh toán nhanh -->
+        <div class="checkout-overlay" id="checkout-overlay">
+            <div class="checkout-modal">
+                <span class="close-checkout" id="close-checkout">&times;</span>
+
+                <div class="checkout-product-preview">
+                    <!-- Ảnh và thông tin sản phẩm sẽ được nạp động bằng JS -->
+                    <img src="" alt="Product Preview" id="checkout-img">
+                    <div class="checkout-details">
+                        <h3 id="checkout-name">Product Name</h3>
+                        <p id="checkout-price">$0.00</p>
+                    </div>
+                </div>
+
+                <div class="checkout-options">
+                    <h4>Chọn Kích Cỡ</h4>
+                    <div class="size-selector">
+                        <span class="size-btn">S</span>
+                        <span class="size-btn active">M</span>
+                        <span class="size-btn">L</span>
+                        <span class="size-btn">XL</span>
+                    </div>
+
+                    <h4>Phương Thức Thanh Toán</h4>
+                    <div style="display: flex; gap: 1.5rem; margin-bottom: 3rem; color: #555; font-size: 2rem;">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-apple-pay"></i>
+                        <i class="fas fa-wallet"></i>
+                    </div>
+
+                    <button class="btn-complete-order">Xác Nhận Đặt Hàng</button>
+                    <p style="text-align: center; color: #555; font-size: 1.1rem; margin-top: 1.5rem;">Thanh toán an
+                        toàn bảo mật bởi ZORENB Secure</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER: Supreme Luxury Edition - Tối giản và trường tồn -->
+        <footer class="site-footer reveal">
+            <div class="section-container">
+                <div class="footer-logo">ZORENB</div>
+
+                <p class="footer-heritage-msg">
+                    "ZORENB không chỉ là thời trang, đó là một di sản về sự tinh tế và đẳng cấp bền vững qua thời gian.
+                    Một tuyệt tác của Quiet Luxury bắt đầu từ sự lặng lẽ."
+                </p>
+
+                <nav class="footer-nav">
+                    <a href="#">BST Mùa Đông</a>
+                    <a href="#">Bespoke Atelier</a>
+                    <a href="#">Hành trình Di sản</a>
+                    <a href="#">Liên hệ</a>
+                </nav>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2024 ZORENB Luxury Showroom. Được bảo hộ bởi di sản sáng tạo.</p>
+                </div>
+            </div>
+        </footer>
+    </div> <!-- Kết thúc app-container -->
+
+    <!-- FontAwesome for Payment Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- JAVASCRIPT: Xử lý tương tác Color Switcher, Image Zoom & Quick Checkout -->
+    <script>
+        // Cập nhật số lượng giỏ hàng ban đầu
+        function updateHeaderCartCount() {
+            const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+        updateHeaderCartCount();
+
+        // 1. Logic chuyển đổi màu sắc (Color Switcher)
+        document.querySelectorAll('.swatch').forEach(swatch => {
+            swatch.addEventListener('click', function (e) {
+                e.stopPropagation(); // Ngăn sự kiện click lan ra thẻ sản phẩm
+                const card = this.closest('.product-card');
+                const mainImg = card.querySelector('img');
+                const newImgSrc = this.getAttribute('data-image');
+
+                mainImg.style.opacity = '0.4';
+                setTimeout(() => {
+                    mainImg.src = newImgSrc;
+                    mainImg.style.opacity = '1';
+                }, 200);
+
+                card.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 2. Hiệu ứng Kính lúp đã được loại bỏ theo yêu cầu
+
+        // 3. Logic Thanh toán nhanh (Quick Checkout)
+        const overlay = document.getElementById('checkout-overlay');
+        const closeModal = document.getElementById('close-checkout');
+
+        document.querySelectorAll('.product-price').forEach(priceTag => {
+            priceTag.style.cursor = 'pointer';
+            priceTag.title = 'Nhấn để thanh toán nhanh';
+
+            priceTag.addEventListener('click', function () {
+                const card = this.closest('.product-card');
+                const name = card.querySelector('.product-name').innerText;
+                const price = this.innerText;
+                const imgSrc = card.querySelector('img').src;
+
+                // Nạp dữ liệu vào Modal
+                document.getElementById('checkout-name').innerText = name;
+                document.getElementById('checkout-price').innerText = price;
+                document.getElementById('checkout-img').src = imgSrc;
+
+                // Hiển thị Modal
+                overlay.classList.add('active');
+            });
+        });
+
+        closeModal.addEventListener('click', () => overlay.classList.remove('active'));
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) overlay.classList.remove('active');
+        });
+
+        // Chọn size trong modal
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.parentElement.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 4. Xử lý nút "Xác Nhận Đặt Hàng" -> Chuyển hướng sang trang cảm ơn
+        document.querySelector('.btn-complete-order').addEventListener('click', function () {
+            // Hiệu ứng chờ nhẹ trước khi chuyển hướng để tăng tính thực tế
+            this.innerText = 'Đang xử lý di sản...';
+            this.style.opacity = '0.7';
+            setTimeout(() => {
+                window.location.href = 'thankyou.html';
+            }, 800);
+        });
+
+        // 5. Logic Hamburger Menu
+        document.getElementById('hamburger-btn').addEventListener('click', function () {
+            document.getElementById('nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // 6. Logic Cinematic Hero Slider - Trượt Ngang + Đổi Nội dung Chữ
+        const heroTrack = document.getElementById('hero-track');
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const prevBtn = document.getElementById('hero-prev');
+        const nextBtn = document.getElementById('hero-next');
+        const heroSection = document.getElementById('hero-slider');
+        const heroBrand = document.getElementById('hero-brand');
+        const heroSlogan = document.getElementById('hero-slogan-main');
+        const heroSub = document.getElementById('hero-slogan-sub');
+        const heroContent = document.getElementById('hero-content');
+
+        // Dữ liệu Slogan và Kiểu chữ ZORENB riêng biệt cho mỗi cảnh
+        const slideData = [
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Nghệ Thuật Của Sự Sang Trọng Thầm Lặng',
+                sub: 'Khởi nguồn từ kinh đô ánh sáng Paris, 1997'
+            },
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Di Sản Được Khắc Phục Trong Từng Mũi Chỉ',
+                sub: 'Mỗi tác phẩm là một cuộc đàm thoại giữa thợ thủ công và linh hồn'
+            },
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Tụng Ca Nghệ Thuật Trong Sự Im Lặng Hoàn Hảo',
+                sub: 'Nơi thời trang gặp gỡ triết học'
+            },
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Không Góc Cạnh Nào Là Thiếu Sự Cố Ý',
+                sub: 'Thiết kế với công thức chắc chắn như trật tự kiến trúc'
+            },
+            {
+                brand: 'ZORENB',
+                brandStyle: 'style-shimmer',
+                slogan: 'Sự Thuần Khiết Là Hình Thức Xa Xỉ Thượng Hạng',
+                sub: 'Chất liệu chọn lọc từ những vùng đất hiếm của thế giới'
+            }
+        ];
+
+        const totalSlides = heroSlides.length;
+        let currentSlide = 0;
+        let slideInterval;
+        let isAnimating = false;
+
+        // Cập nhật nội dung chữ với hiệu ứng fade độc lập
+        function updateContent(index) {
+            const data = slideData[index];
+
+            // Fade out
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                // Swap nội dung khi đang ẩn
+                heroBrand.textContent = data.brand;
+                heroBrand.className = 'hero-brand ' + data.brandStyle;
+                heroSlogan.textContent = data.slogan;
+                heroSub.textContent = data.sub;
+
+                // Fade in
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 350); // Đợi 350ms sau khi fade out xong
+        }
+
+        // Khởi tạo nội dung slide đầu tiên
+        updateContent(0);
+
+        // Hàm trượt đến ảnh mục tiêu bằng translateX
+        function goToSlide(index) {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            currentSlide = ((index % totalSlides) + totalSlides) % totalSlides;
+
+            // Đẩy Track
+            heroTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Cập nhật Slogan song song với việc trượt ảnh
+            updateContent(currentSlide);
+
+            setTimeout(() => { isAnimating = false; }, 950);
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
+        // Auto-play 8 giây
+        function startSlideShow() { slideInterval = setInterval(nextSlide, 8000); }
+        function resetSlideShow() { clearInterval(slideInterval); startSlideShow(); }
+        startSlideShow();
+
+        // Nút bấm vật lý
+        nextBtn.addEventListener('click', () => { nextSlide(); resetSlideShow(); });
+        prevBtn.addEventListener('click', () => { prevSlide(); resetSlideShow(); });
+
+
+    </script>
+
+    <!-- FLOATING CSKH PHONE WIDGET - Đặt ở cuối body để nằm trên mọi thứ -->
+    <a href="tel:18009090" class="support-ring-btn" id="support-widget" aria-label="Gọi Hỗ Trợ 18009090">
+        <span class="support-ring-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.07 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z">
+                </path>
+            </svg>
+        </span>
+        <span class="support-ring-text">
+            <span class="support-ring-char" style="--i:0">C</span><span class="support-ring-char"
+                style="--i:1">S</span><span class="support-ring-char" style="--i:2">K</span><span
+                class="support-ring-char" style="--i:3">H</span><span class="support-ring-char"
+                style="--i:4">&nbsp;</span><span class="support-ring-char" style="--i:5">1</span><span
+                class="support-ring-char" style="--i:6">8</span><span class="support-ring-char"
+                style="--i:7">0</span><span class="support-ring-char" style="--i:8">0</span><span
+                class="support-ring-char" style="--i:9">9</span><span class="support-ring-char"
+                style="--i:10">0</span><span class="support-ring-char" style="--i:11">9</span><span
+                class="support-ring-char" style="--i:12">0</span>
+        </span>
+    </a>
+</body>
+
+</html>
