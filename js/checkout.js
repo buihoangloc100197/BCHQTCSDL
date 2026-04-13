@@ -112,10 +112,10 @@ function setupProvinceListener() {
             updateCitiesList();
         });
 
-        // Select all text and clear city when focus to allow easy change
+        // Clear field when focus to allow re-selection from datalist
         provinceInput.addEventListener('focus', () => {
-            console.log('Province focus event - selecting all');
-            provinceInput.select();
+            console.log('Province focus event - clearing for new selection');
+            provinceInput.value = '';
             // Clear city when province is focused for re-selection
             if (cityInput) cityInput.value = '';
         });
