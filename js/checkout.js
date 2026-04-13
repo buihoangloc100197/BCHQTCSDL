@@ -57,35 +57,47 @@ function updateStepView() {
 // ========== VALIDATION FUNCTIONS ==========
 
 function validateStep1() {
-    const form = document.getElementById('customer-form');
-    if (!form.checkValidity()) {
-        alert('Vui lòng điền đầy đủ các trường bắt buộc');
-        return false;
-    }
+    const fields = {
+        fullname: { label: 'Họ và tên', input: document.getElementById('fullname') },
+        email: { label: 'Email', input: document.getElementById('email') },
+        phone: { label: 'Số điện thoại', input: document.getElementById('phone') },
+        address: { label: 'Địa chỉ', input: document.getElementById('address') },
+        city: { label: 'Thành phố', input: document.getElementById('city') }
+    };
+
+    const errors = [];
+
+    // Check for empty fields
+    Object.keys(fields).forEach(key => {
+        if (!fields[key].input.value.trim()) {
+            errors.push(`❌ ${fields[key].label} không được để trống`);
+        }
+    });
 
     // Email validation
-    const email = document.getElementById('email').value;
-    if (!isValidEmail(email)) {
-        alert('Địa chỉ email không hợp lệ');
-        return false;
+    const email = fields.email.input.value.trim();
+    if (email && !isValidEmail(email)) {
+        errors.push(`❌ Địa chỉ email không hợp lệ`);
     }
 
     // Phone validation
-    const phone = document.getElementById('phone').value;
-    if (!isValidPhone(phone)) {
-        alert('Số điện thoại không hợp lệ');
+    const phone = fields.phone.input.value.trim();
+    if (phone && !isValidPhone(phone)) {
+        errors.push(`❌ Số điện thoại phải là 10-11 chữ số`);
+    }
+
+    // Show error message if there are errors
+    const errorContainer = document.getElementById('form-error-message');
+    if (errors.length > 0) {
+        const errorList = errors.map(err => `<li>${err}</li>`).join('');
+        errorContainer.innerHTML = `<strong>⚠️ Vui lòng sửa các lỗi sau:</strong><ul>${errorList}</ul>`;
+        errorContainer.style.display = 'block';
+        window.scrollTo({ top: errorContainer.offsetTop - 100, behavior: 'smooth' });
         return false;
     }
 
-    // Delivery date validation
-    const deliveryDate = new Date(document.getElementById('delivery-date').value);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    if (deliveryDate < today) {
-        alert('Ngày giao hàng phải là ngày trong tương lai');
-        return false;
-    }
-
+    // Hide error message if all is valid
+    errorContainer.style.display = 'none';
     return true;
 }
 
@@ -267,10 +279,7 @@ function renderCustomerInfo() {
             <span class="review-info-label">Địa Chỉ:</span> ${info.address || '—'}
         </div>
         <div class="review-info-row">
-            <span class="review-info-label">Thành Phố:</span> ${info.city || '—'} - ${info.zipcode || '—'}
-        </div>
-        <div class="review-info-row">
-            <span class="review-info-label">Ngày Giao Hàng:</span> ${formatDate(info.deliveryDate) || '—'}
+            <span class="review-info-label">Thành Phố:</span> ${info.city || '—'}
         </div>
         ${info.notes ? `<div class="review-info-row"><span class="review-info-label">Ghi Chú:</span> ${info.notes}</div>` : ''}
     `;
