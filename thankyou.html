@@ -26,6 +26,15 @@
                 </ul>
             </nav>
             <div class="header-actions">
+                <a href="cart.html" class="cart-icon-btn" id="header-cart-link" aria-label="Giỏ hàng">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 01-8 0"></path>
+                    </svg>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </a>
                 <a href="#" class="btn-auth login-link">Tài Khoản</a>
             </div>
             <button class="hamburger" id="hamburger-btn" aria-label="Menu">
@@ -92,6 +101,14 @@
 
     <!-- Script Hamburger Menu cho trang cảm ơn -->
     <script>
+        // Cập nhật số lượng giỏ hàng
+        function updateHeaderCartCount() {
+            const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+            const badge = document.getElementById('cart-count');
+            if (badge) badge.textContent = cart.length;
+        }
+        updateHeaderCartCount();
+
         document.getElementById('hamburger-btn').addEventListener('click', function () {
             document.getElementById('nav-menu').classList.toggle('active');
             this.classList.toggle('active');

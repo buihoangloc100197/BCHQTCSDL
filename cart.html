@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ Hàng | ZORENB Luxury Heritage</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .cart-section {
             padding: 15rem 5% 10rem;
@@ -164,6 +165,43 @@
             padding-bottom: 5px;
             font-size: 1.4rem;
         }
+
+        .delete-item-btn {
+            color: #ff4d4d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-left: auto; /* Push to the right */
+        }
+
+        .delete-item-btn:hover {
+            background: rgba(255, 77, 77, 0.1);
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .btn-clear-all {
+            background: transparent;
+            border: 1px solid #333;
+            color: #666;
+            width: 100%;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-clear-all:hover {
+            border-color: #ff4d4d;
+            color: #ff4d4d;
+        }
+
     </style>
 </head>
 
@@ -229,7 +267,7 @@
                                 <button class="cart-qty-btn" onclick="updateQty(${index}, 1)">+</button>
                             </div>
                         </div>
-                        <div class="delete-item-btn" onclick="removeItem(${index})" title="Xóa sản phẩm">
+                        <div class="delete-item-btn" onclick="if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) removeItem(${index})" title="Xóa sản phẩm">
                             <i class="fas fa-trash-alt" style="font-size: 1.8rem;"></i>
                         </div>
                     </div>
@@ -272,6 +310,11 @@
                 renderCart();
             }
         };
+
+        // Xóa giỏ hàng khi người dùng rời trang hoàn toàn
+        window.addEventListener('beforeunload', () => {
+            localStorage.removeItem('ZorenbCart');
+        });
     </script>
 </body>
 
