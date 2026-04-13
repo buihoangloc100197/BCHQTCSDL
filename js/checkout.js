@@ -112,16 +112,19 @@ function setupProvinceListener() {
             updateCitiesList();
         });
 
-        // Clear field when focus to allow re-selection from datalist
-        provinceInput.addEventListener('focus', () => {
-            console.log('Province focus event - clearing for new selection');
-            provinceInput.value = '';
-            // Dispatch input event to trigger datalist dropdown
-            provinceInput.dispatchEvent(new Event('input', { bubbles: true }));
-            // Set cursor position
-            provinceInput.setSelectionRange(0, 0);
-            // Clear city when province is focused for re-selection
-            if (cityInput) cityInput.value = '';
+        // Clear field and show dropdown on mousedown (before focus lock)
+        provinceInput.addEventListener('mousedown', (e) => {
+            if (provinceInput.value) {
+                e.preventDefault();
+                console.log('Province mousedown - clearing for new selection');
+                provinceInput.value = '';
+                /* Clear city too */
+                if (cityInput) cityInput.value = '';
+                /* Try to open picker if available */
+                if (provinceInput.showPicker) {
+                    setTimeout(() => provinceInput.showPicker(), 0);
+                }
+            }
         });
 
         console.log('✓ All province listeners attached');
@@ -129,13 +132,16 @@ function setupProvinceListener() {
 
     // Setup city field listeners for re-selection
     if (cityInput) {
-        cityInput.addEventListener('focus', () => {
-            console.log('City focus event - clearing for new selection');
-            cityInput.value = '';
-            // Dispatch input event to trigger datalist dropdown
-            cityInput.dispatchEvent(new Event('input', { bubbles: true }));
-            // Set cursor position
-            cityInput.setSelectionRange(0, 0);
+        cityInput.addEventListener('mousedown', (e) => {
+            if (cityInput.value) {
+                e.preventDefault();
+                console.log('City mousedown - clearing for new selection');
+                cityInput.value = '';
+                /* Try to open picker if available */
+                if (cityInput.showPicker) {
+                    setTimeout(() => cityInput.showPicker(), 0);
+                }
+            }
         });
 
         console.log('✓ City listeners attached');
