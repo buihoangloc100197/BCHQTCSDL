@@ -84,37 +84,72 @@ document.addEventListener('DOMContentLoaded', () => {
 // Setup province change listener to update cities datalist
 function setupProvinceListener() {
     const provinceInput = document.getElementById('province');
-    console.log('setupProvinceListener called, provinceInput:', provinceInput);
+    const cityInput = document.getElementById('city');
+    const citiesList = document.getElementById('cities-list');
+
+    console.log('✓ setupProvinceListener called');
+    console.log('provinceInput exists:', !!provinceInput);
+    console.log('cityInput exists:', !!cityInput);
+    console.log('citiesList exists:', !!citiesList);
+
     if (provinceInput) {
-        provinceInput.addEventListener('change', updateCitiesList);
-        provinceInput.addEventListener('blur', updateCitiesList);
-        console.log('✓ Province listener setup complete');
+        // Trigger update on page load to initialize if province already has value
+        updateCitiesList();
+
+        // Add listeners for changes
+        provinceInput.addEventListener('change', () => {
+            console.log('Province changed to:', provinceInput.value);
+            updateCitiesList();
+        });
+
+        provinceInput.addEventListener('blur', () => {
+            console.log('Province blur event');
+            updateCitiesList();
+        });
+
+        provinceInput.addEventListener('input', () => {
+            console.log('Province input event, value:', provinceInput.value);
+            updateCitiesList();
+        });
+
+        console.log('✓ All province listeners attached');
     }
 }
 
 // Update cities datalist based on selected province
 function updateCitiesList() {
     const provinceInput = document.getElementById('province');
-    const selectedProvince = provinceInput.value.trim();
     const citiesList = document.getElementById('cities-list');
 
-    console.log('updateCitiesList called');
-    console.log('selectedProvince:', selectedProvince);
-    console.log('Available cities:', vietnamCitiesByProvince[selectedProvince]);
+    if (!provinceInput || !citiesList) {
+        console.warn('⚠️ provinceInput or citiesList not found');
+        return;
+    }
+
+    const selectedProvince = provinceInput.value.trim();
+
+    console.log('=== updateCitiesList ===');
+    console.log('Selected province:', selectedProvince);
+    console.log('Province exists in data:', !!vietnamCitiesByProvince[selectedProvince]);
 
     // Clear old options
     citiesList.innerHTML = '';
 
     // Add new cities based on selected province
-    if (vietnamCitiesByProvince[selectedProvince]) {
-        vietnamCitiesByProvince[selectedProvince].forEach(city => {
+    if (selectedProvince && vietnamCitiesByProvince[selectedProvince]) {
+        const cities = vietnamCitiesByProvince[selectedProvince];
+        console.log('Available cities:', cities);
+
+        cities.forEach(city => {
             const option = document.createElement('option');
             option.value = city;
+            option.textContent = city;
             citiesList.appendChild(option);
-            console.log('Added city:', city);
+            console.log('✓ Added city:', city);
         });
-        console.log('✓ Cities list updated:', vietnamCitiesByProvince[selectedProvince].length, 'cities');
-    } else {
+
+        console.log('✓ Total cities added:', cities.length);
+    } else if (selectedProvince) {
         console.warn('⚠️ Province not found in vietnamCitiesByProvince:', selectedProvince);
     }
 }
