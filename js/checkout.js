@@ -81,6 +81,23 @@ document.addEventListener('DOMContentLoaded', () => {
     setupProvinceListener();
 });
 
+// Clear province input function
+window.clearProvinceInput = (event) => {
+    event.preventDefault();
+    const provinceInput = document.getElementById('province');
+    const cityInput = document.getElementById('city');
+
+    provinceInput.value = '';
+    cityInput.value = '';
+
+    updateCitiesList();
+
+    console.log('✓ Province and city inputs cleared');
+
+    // Focus back to province input for convenience
+    provinceInput.focus();
+};
+
 // Setup province change listener to update cities datalist
 function setupProvinceListener() {
     const provinceInput = document.getElementById('province');

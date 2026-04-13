@@ -182,6 +182,36 @@
     box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
 }
 
+/* ========== INPUT WITH CLEAR BUTTON ========== */
+
+.input-with-clear {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-clear input {
+    width: 100%;
+    padding-right: 4rem;
+}
+
+.btn-clear-input {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.btn-clear-input:hover {
+    color: #ff6b6b;
+}
+
 /* ========== ERROR MESSAGE ========== */
 
 .form-error-message {
