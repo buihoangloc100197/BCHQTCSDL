@@ -7,12 +7,107 @@ let checkoutData = {
     cart: []
 };
 
+// Vietnam cities/towns by province (Danh sách thành phố/thị xã theo tỉnh)
+const vietnamCitiesByProvince = {
+    'An Giang': ['Long Xuyên', 'Châu Đốc'],
+    'Bà Rịa - Vũng Tàu': ['Vũng Tàu', 'Bà Rịa'],
+    'Bạc Liêu': ['Bạc Liêu'],
+    'Bắc Giang': ['Bắc Giang', 'Việt Yên'],
+    'Bắc Kạn': ['Bắc Kạn'],
+    'Bắc Ninh': ['Bắc Ninh', 'Từ Sơn', 'Yên Phong'],
+    'Bến Tre': ['Bến Tre'],
+    'Bình Định': ['Quy Nhơn'],
+    'Bình Dương': ['Thủ Dầu Một', 'Dĩ An', 'Thuận An', 'Bến Cát', 'Tân Uyên'],
+    'Bình Phước': ['Đồng Xoài', 'Bù Đập'],
+    'Bình Thuận': ['Phan Thiết', 'La Gi'],
+    'Cà Mau': ['Cà Mau'],
+    'Cao Bằng': ['Cao Bằng'],
+    'Cần Thơ': ['Cần Thơ'],
+    'Đà Nẵng': ['Đà Nẵng'],
+    'Đắk Lắk': ['Buôn Ma Thuột', 'Buôn Hồ'],
+    'Đắk Nông': ['Gia Nghĩa'],
+    'Điện Biên': ['Điện Biên Phủ'],
+    'Đồng Nai': ['Biên Hòa', 'Long Khánh'],
+    'Đồng Tháp': ['Cao Lãnh', 'Hồng Ngu'],
+    'Gia Lai': ['Pleiku', 'An Khê'],
+    'Hà Giang': ['Hà Giang'],
+    'Hà Nam': ['Phủ Lý', 'Duy Tiên'],
+    'Hà Nội': ['Hà Nội'],
+    'Hải Dương': ['Hải Dương', 'Kinh Môn', 'Chí Linh'],
+    'Hải Phòng': ['Hải Phòng'],
+    'Hậu Giang': ['Vị Thanh'],
+    'Hòa Bình': ['Hòa Bình'],
+    'Hưng Yên': ['Hưng Yên', 'Mỹ Hào'],
+    'Khánh Hòa': ['Nha Trang', 'Cam Ranh'],
+    'Kiên Giang': ['Rạch Giá', 'Hà Tiên'],
+    'Kon Tum': ['Kon Tum'],
+    'Lai Châu': ['Lai Châu'],
+    'Lâm Đồng': ['Đà Lạt', 'Bảo Lộc'],
+    'Lạng Sơn': ['Lạng Sơn'],
+    'Lào Cai': ['Lào Cai', 'Sa Pa'],
+    'Long An': ['Tân An', 'Mỹ Tho', 'Tân Thạnh', 'Cần Đước'],
+    'Nam Định': ['Nam Định'],
+    'Nghệ An': ['Vinh', 'Cửa Lò'],
+    'Ninh Bình': ['Ninh Bình'],
+    'Ninh Thuận': ['Phan Rang-Tháp Chàm'],
+    'Phú Thọ': ['Việt Trì', 'Phú Thọ'],
+    'Phú Yên': ['Tuy Hòa'],
+    'Quảng Bình': ['Đông Hới'],
+    'Quảng Nam': ['Hội An', 'Tam Kỳ'],
+    'Quảng Ngãi': ['Quảng Ngãi'],
+    'Quảng Ninh': ['Hạ Long', 'Móng Cái'],
+    'Quảng Trị': ['Đông Hà'],
+    'Sóc Trăng': ['Sóc Trăng'],
+    'Sơn La': ['Sơn La'],
+    'Tây Ninh': ['Tây Ninh'],
+    'Thái Bình': ['Thái Bình', 'Quỳnh Côi'],
+    'Thái Nguyên': ['Thái Nguyên', 'Sông Công'],
+    'Thanh Hóa': ['Thanh Hóa', 'Bỉm Sơn'],
+    'Thừa Thiên Huế': ['Huế'],
+    'Tiền Giang': ['Mỹ Tho', 'Gò Công'],
+    'TP. Hồ Chí Minh': ['TP. Hồ Chí Minh'],
+    'Trà Vinh': ['Trà Vinh'],
+    'Tuyên Quang': ['Tuyên Quang'],
+    'Vĩnh Long': ['Vĩnh Long'],
+    'Vĩnh Phúc': ['Vĩnh Phúc', 'Phúc Yên'],
+    'Yên Bái': ['Yên Bái']
+};
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadCheckoutData();
     loadCartData();
     renderReview();
+    setupProvinceListener();
 });
+
+// Setup province change listener to update cities datalist
+function setupProvinceListener() {
+    const provinceInput = document.getElementById('province');
+    if (provinceInput) {
+        provinceInput.addEventListener('change', updateCitiesList);
+        provinceInput.addEventListener('blur', updateCitiesList);
+    }
+}
+
+// Update cities datalist based on selected province
+function updateCitiesList() {
+    const provinceInput = document.getElementById('province');
+    const selectedProvince = provinceInput.value.trim();
+    const citiesList = document.getElementById('cities-list');
+
+    // Clear old options
+    citiesList.innerHTML = '';
+
+    // Add new cities based on selected province
+    if (vietnamCitiesByProvince[selectedProvince]) {
+        vietnamCitiesByProvince[selectedProvince].forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            citiesList.appendChild(option);
+        });
+    }
+}
 
 // ========== STEPPER FUNCTIONS ==========
 
