@@ -189,6 +189,39 @@ body {
     justify-content: center;
 }
 
+.cart-icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--clr-ivory);
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.cart-icon-btn:hover {
+    color: var(--clr-gold);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background: var(--clr-gold);
+    color: var(--clr-onyx);
+    font-size: 0.9rem;
+    font-weight: 700;
+    min-width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .btn-auth {
     font-size: 1.2rem;
     text-transform: uppercase;

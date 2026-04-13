@@ -514,6 +514,12 @@
         // =============================================
         //  ĐỌC DỮ LIỆU TỪ URL VÀ LOCALSTORAGE (DYNAMIC ROUTER)
         // =============================================
+        function updateHeaderCartCount() {
+            const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+            const badge = document.getElementById('cart-count');
+            if (badge) badge.textContent = cart.length;
+        }
+
         const params = new URLSearchParams(window.location.search);
         const id = 5;
         let product = PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
@@ -717,7 +723,8 @@
             cart.push(cartItem);
             localStorage.setItem('ZorenbCart', JSON.stringify(cart));
 
-            window.location.href = '../cart.html';
+            updateHeaderCartCount();
+            showToast(`✓ Đã thêm ${qty} × ${product.name} vào giỏ hàng`);
         });
 
         // Đặt mua ngay
@@ -767,6 +774,8 @@
                 });
             });
         };
+
+        updateHeaderCartCount();
     </script>
 
     <!-- FLOATING CSKH PHONE WIDGET - Đặt ở cuối body để nằm trên mọi thứ -->

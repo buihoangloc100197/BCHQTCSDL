@@ -414,6 +414,12 @@
         // =============================================
         //  ĐỌC DỮ LIỆU TỪ URL VÀ LOCALSTORAGE (DYNAMIC ROUTER)
         // =============================================
+        function updateHeaderCartCount() {
+            const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+            const badge = document.getElementById('cart-count');
+            if (badge) badge.textContent = cart.length;
+        }
+
         const params = new URLSearchParams(window.location.search);
         const id = parseInt(params.get('id')) || 1;
         let product = PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
@@ -601,13 +607,15 @@
 
         // Thêm giỏ
         document.getElementById('btn-add-cart').addEventListener('click', () => {
-            const size = document.querySelector('.pd-size-btn.active')?.dataset.size || '—';
+            const selectedSize = document.querySelector('.pd-size-btn.active')?.dataset.size || 'M';
+            const selectedColor = document.getElementById('color-label').textContent;
 
             const cartItem = {
                 name: product.name,
                 price: product.price,
                 image: product.mainImg,
-                size: size,
+                size: selectedSize,
+                color: selectedColor,
                 qty: qty
             };
 
@@ -615,7 +623,8 @@
             cart.push(cartItem);
             localStorage.setItem('ZorenbCart', JSON.stringify(cart));
 
-            window.location.href = 'cart.html';
+            updateHeaderCartCount();
+            showToast(`✓ Đã thêm ${qty} × ${product.name} vào giỏ hàng`);
         });
 
         // Đặt mua ngay
@@ -638,6 +647,33 @@
                 document.getElementById('tab-' + this.dataset.tab).classList.add('active');
             });
         });
+
+        // Size Guide Modal Logic
+        const sizeGuideBtn = document.querySelector('.pd-size-guide');
+        const sizeModal = document.getElementById('size-guide-modal');
+        const closeSizeModal = document.getElementById('close-size-guide');
+
+        if (sizeGuideBtn && sizeModal) {
+            sizeGuideBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                sizeModal.classList.add('active');
+            });
+            closeSizeModal.addEventListener('click', () => sizeModal.classList.remove('active'));
+            sizeModal.addEventListener('click', (e) => {
+                if (e.target === sizeModal) sizeModal.classList.remove('active');
+            });
+            const modalTabs = document.querySelectorAll('.pd-modal-tab');
+            modalTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    modalTabs.forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.pd-size-table-container').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById(this.dataset.target).classList.add('active');
+                });
+            });
+        }
+
+        updateHeaderCartCount();
     </script>
 
     <!-- FLOATING CSKH PHONE WIDGET - Đặt ở cuối body để nằm trên mọi thứ -->

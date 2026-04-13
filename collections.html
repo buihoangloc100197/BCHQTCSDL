@@ -377,6 +377,13 @@
 
     <!-- Script xử lý các logic tương tác cho trang Collections -->
     <script>
+        // Hàm cập nhật số lượng giỏ hàng trên Header
+        function updateHeaderCartCount() {
+            const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+            const badge = document.getElementById('cart-count');
+            if (badge) badge.textContent = cart.length;
+        }
+
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
         const sidebar = document.getElementById('sidebar');
@@ -467,6 +474,8 @@
             if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetSlideShow(); });
             if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetSlideShow(); });
         }
+
+        updateHeaderCartCount();
 
         // --- 2. Logic Dual Range Price Slider (Thanh trượt giá) ---
         const sliderMin = document.getElementById('slider-min');
@@ -613,15 +622,18 @@
                 const cartItem = {
                     name: item.querySelector('.item-name').innerText,
                     price: item.querySelector('.item-price').innerText,
-                    image: 'image/zorenb/product_01.jpg', // Ảnh mặc định hoặc lấy từ img nếu có
+                    image: 'image/zorenb/product_01.jpg',
                     size: 'M',
+                    color: 'Default',
                     qty: 1
                 };
 
                 let cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
                 cart.push(cartItem);
                 localStorage.setItem('ZorenbCart', JSON.stringify(cart));
-                window.location.href = 'cart.html';
+
+                updateHeaderCartCount();
+                alert(`Đã thêm ${cartItem.name} vào giỏ hàng!`);
             });
         });
 

@@ -164,37 +164,7 @@
             padding-bottom: 5px;
             font-size: 1.4rem;
         }
-
-        .btn-clear-all {
-            background: transparent;
-            border: 1px solid #444;
-            color: #888;
-            padding: 1.5rem 3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-            margin-top: 1.5rem;
-        }
-
-        .btn-clear-all:hover {
-            border-color: #ff4d4d;
-            color: #ff4d4d;
-        }
-
-        .delete-item-btn {
-            color: #555;
-            transition: 0.3s;
-            cursor: pointer;
-            padding: 1rem;
-        }
-
-        .delete-item-btn:hover {
-            color: #ff4d4d;
-        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -237,7 +207,7 @@
                 container.innerHTML = `
                     <div class="empty-cart">
                         <p style="font-size: 1.8rem; color: #666;">Giỏ hàng của bạn đang trống.</p>
-                        <a href="collections.html" class="btn-continue">Tiếp tục khám phá bộ sưu tập</a>
+                        <a href="collections.html" class="btn-continue">Tiếp tục khám phá di sản</a>
                     </div>`;
                 return;
             }
@@ -251,7 +221,7 @@
                         <img src="${item.image}" class="cart-item-img">
                         <div class="cart-item-info">
                             <h3 class="cart-item-name">${item.name}</h3>
-                            <p class="cart-item-meta">Size: ${item.size} | Màu: ${item.color}</p>
+                            <p class="cart-item-meta">Size: ${item.size} | Màu: ${item.color || 'Mặc định'}</p>
                             <p class="cart-item-price">${item.price}</p>
                             <div class="cart-qty-control">
                                 <button class="cart-qty-btn" onclick="updateQty(${index}, -1)">−</button>
@@ -259,7 +229,7 @@
                                 <button class="cart-qty-btn" onclick="updateQty(${index}, 1)">+</button>
                             </div>
                         </div>
-                        <div class="delete-item-btn" onclick="removeItem(${index})">
+                        <div class="delete-item-btn" onclick="removeItem(${index})" title="Xóa sản phẩm">
                             <i class="fas fa-trash-alt" style="font-size: 1.8rem;"></i>
                         </div>
                     </div>
@@ -295,14 +265,13 @@
             renderCart();
         };
 
+        renderCart();
         window.clearFullCart = () => {
             if (confirm('Bạn có chắc chắn muốn xóa toàn bộ sản phẩm khỏi giỏ hàng?')) {
                 localStorage.removeItem('ZorenbCart');
                 renderCart();
             }
         };
-
-        renderCart();
     </script>
 </body>
 
