@@ -116,6 +116,10 @@ function setupProvinceListener() {
         provinceInput.addEventListener('focus', () => {
             console.log('Province focus event - clearing for new selection');
             provinceInput.value = '';
+            // Dispatch input event to trigger datalist dropdown
+            provinceInput.dispatchEvent(new Event('input', { bubbles: true }));
+            // Set cursor position
+            provinceInput.setSelectionRange(0, 0);
             // Clear city when province is focused for re-selection
             if (cityInput) cityInput.value = '';
         });
@@ -128,6 +132,10 @@ function setupProvinceListener() {
         cityInput.addEventListener('focus', () => {
             console.log('City focus event - clearing for new selection');
             cityInput.value = '';
+            // Dispatch input event to trigger datalist dropdown
+            cityInput.dispatchEvent(new Event('input', { bubbles: true }));
+            // Set cursor position
+            cityInput.setSelectionRange(0, 0);
         });
 
         console.log('✓ City listeners attached');
