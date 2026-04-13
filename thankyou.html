@@ -101,6 +101,12 @@
 
     <!-- Script Hamburger Menu cho trang cảm ơn -->
     <script>
+        // Clear cart on page load (checkout completed)
+        window.addEventListener('load', () => {
+            localStorage.removeItem('ZorenbCart');
+            sessionStorage.removeItem('checkoutData');
+        });
+
         // Cập nhật số lượng giỏ hàng
         function updateHeaderCartCount() {
             const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
@@ -114,9 +120,13 @@
             this.classList.toggle('active');
         });
 
-        // Tạo mã đơn hàng ngẫu nhiên để tăng tính thực tế
-        const randomId = Math.floor(1000 + Math.random() * 9000);
-        document.getElementById('display-order-id').innerText = `ZNB-ORDER-2024-${randomId}`;
+        // Display order ID from last order or generate random
+        const lastOrder = JSON.parse(localStorage.getItem('lastOrder'));
+        let orderId = lastOrder ? lastOrder.orderId : `ZNB-ORDER-2024-${Math.floor(1000 + Math.random() * 9000)}`;
+        document.getElementById('display-order-id').innerText = orderId;
+
+        // Clear last order from storage
+        localStorage.removeItem('lastOrder');
     </script>
 </body>
 

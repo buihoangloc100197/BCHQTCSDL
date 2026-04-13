@@ -282,7 +282,7 @@
                         <div class="summary-row"><span>Sản phẩm</span><span>$${subtotal.toLocaleString()}</span></div>
                         <div class="summary-row"><span>Vận chuyển</span><span>Free</span></div>
                         <div class="summary-total"><div class="summary-row" style="color:inherit"><span>Tổng cộng</span><span>$${subtotal.toLocaleString()}</span></div></div>
-                        <button class="btn-checkout" onclick="window.location.href='thankyou.html'">Thanh Toán</button>
+                        <button class="btn-checkout" onclick="completeCheckout()">Thanh Toán</button>
                         <button class="btn-clear-all" onclick="clearFullCart()">Hủy Toàn Bộ</button>
                     </div>
                 </div>
@@ -311,10 +311,9 @@
             }
         };
 
-        // Xóa giỏ hàng khi người dùng rời trang hoàn toàn
-        window.addEventListener('beforeunload', () => {
-            localStorage.removeItem('ZorenbCart');
-        });
+        window.completeCheckout = () => {
+            window.location.href = 'checkout.html';
+        };
     </script>
 </body>
 

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | ZORENB Luxury Heritage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="site-header header-scrolled">
+            <div class="logo">ZORENB</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                    <li><a href="collections.html" class="nav-link">Bộ Sưu Tập</a></li>
+                    <li><a href="#" class="nav-link">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="checkout-section">
+            <div class="checkout-container">
+                <h1 class="checkout-title">Hoàn Tất Đơn Hàng</h1>
+
+                <!-- STEPPER -->
+                <div class="checkout-stepper">
+                    <div class="stepper-track"></div>
+                    <div class="stepper-step active" data-step="1">
+                        <div class="stepper-circle">1</div>
+                        <p class="stepper-label">Thông Tin</p>
+                    </div>
+                    <div class="stepper-step" data-step="2">
+                        <div class="stepper-circle">2</div>
+                        <p class="stepper-label">Thanh Toán</p>
+                    </div>
+                    <div class="stepper-step" data-step="3">
+                        <div class="stepper-circle">3</div>
+                        <p class="stepper-label">Xác Nhận</p>
+                    </div>
+                </div>
+
+                <!-- CHECKOUT CONTENT -->
+                <div class="checkout-content">
+                    <!-- STEP 1: CUSTOMER INFO -->
+                    <div class="checkout-step active" id="step-1">
+                        <h2 class="step-title">Thông Tin Giao Hàng</h2>
+
+                        <form class="checkout-form" id="customer-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullname">Họ và Tên *</label>
+                                    <input type="text" id="fullname" name="fullname" required placeholder="Nhập họ và tên đầy đủ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Số Điện Thoại *</label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="0123456789">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Địa Chỉ *</label>
+                                <input type="text" id="address" name="address" required placeholder="Số nhà, tên đường">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">Thành Phố *</label>
+                                    <input type="text" id="city" name="city" required placeholder="TP. Hồ Chí Minh">
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipcode">Mã Bưu Điện *</label>
+                                    <input type="text" id="zipcode" name="zipcode" required placeholder="10000">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="notes">Ghi Chú Đặc Biệt</label>
+                                <textarea id="notes" name="notes" placeholder="Yêu cầu đặc biệt cho đơn hàng..." rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="delivery-date">Ngày Giao Hàng Dự Kiến *</label>
+                                <input type="date" id="delivery-date" name="delivery-date" required>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="window.location.href='cart.html'">Quay Lại Giỏ Hàng</button>
+                                <button type="button" class="btn-primary" onclick="validateAndGoToStep(2)">Tiếp Tục</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- STEP 2: PAYMENT METHOD -->
+                    <div class="checkout-step" id="step-2">
+                        <h2 class="step-title">Phương Thức Thanh Toán</h2>
+
+                        <form class="checkout-form" id="payment-form">
+                            <div class="payment-options">
+                                <!-- CREDIT CARD -->
+                                <label class="payment-option">
+                                    <input type="radio" name="payment-method" value="credit-card" required onchange="togglePaymentForm('credit-card')">
+                                    <div class="payment-card">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                        <div class="payment-info">
+                                            <h4>Thẻ Tín Dụng</h4>
+                                            <p>Visa, Mastercard</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- PAYPAL -->
+                                <label class="payment-option">
+                                    <input type="radio" name="payment-method" value="paypal" required onchange="togglePaymentForm('paypal')">
+                                    <div class="payment-card">
+                                        <div class="payment-icon">
+                                            <i class="fab fa-paypal"></i>
+                                        </div>
+                                        <div class="payment-info">
+                                            <h4>Ví Điện Tử</h4>
+                                            <p>PayPal</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- BANK TRANSFER -->
+                                <label class="payment-option">
+                                    <input type="radio" name="payment-method" value="bank-transfer" required onchange="togglePaymentForm('bank-transfer')">
+                                    <div class="payment-card">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-university"></i>
+                                        </div>
+                                        <div class="payment-info">
+                                            <h4>Chuyển Khoản Ngân Hàng</h4>
+                                            <p>Chuyển khoản trực tiếp</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- PAYMENT DETAILS (shown based on selection) -->
+                            <div id="payment-details" class="payment-details" style="display: none;">
+                                <!-- CREDIT CARD FORM -->
+                                <div id="credit-card-form" class="payment-form" style="display: none;">
+                                    <h4>Thông Tin Thẻ</h4>
+                                    <div class="form-group">
+                                        <label for="card-number">Số Thẻ *</label>
+                                        <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="card-name">Tên Chủ Thẻ *</label>
+                                            <input type="text" id="card-name" name="card-name" placeholder="JOHN DOE">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="card-expiry">Thời Hạn (MM/YY) *</label>
+                                            <input type="text" id="card-expiry" name="card-expiry" placeholder="12/25" maxlength="5">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="card-cvv">CVV *</label>
+                                            <input type="text" id="card-cvv" name="card-cvv" placeholder="123" maxlength="3">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PAYPAL FORM -->
+                                <div id="paypal-form" class="payment-form" style="display: none;">
+                                    <h4>Thông Tin PayPal</h4>
+                                    <div class="form-group">
+                                        <label for="paypal-email">Email PayPal *</label>
+                                        <input type="email" id="paypal-email" name="paypal-email" placeholder="your@paypal.com">
+                                    </div>
+                                    <p class="payment-info-note">Bạn sẽ được chuyển hướng đến PayPal để hoàn tất thanh toán</p>
+                                </div>
+
+                                <!-- BANK TRANSFER FORM -->
+                                <div id="bank-transfer-form" class="payment-form" style="display: none;">
+                                    <h4>Thông Tin Chuyển Khoản</h4>
+                                    <div class="bank-info-box">
+                                        <p><strong>Ngân Hàng:</strong> Vietcombank</p>
+                                        <p><strong>Số Tài Khoản:</strong> 1234567890</p>
+                                        <p><strong>Chủ Tài Khoản:</strong> ZORENB LUXURY</p>
+                                        <p><strong>Nội Dung:</strong> [Order ID]</p>
+                                    </div>
+                                    <p class="payment-info-note">Vui lòng cung cấp chứng chỉ chuyển khoản sau khi thanh toán</p>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="goToStep(1)">Quay Lại</button>
+                                <button type="button" class="btn-primary" onclick="validateAndGoToStep(3)">Tiếp Tục</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- STEP 3: ORDER REVIEW -->
+                    <div class="checkout-step" id="step-3">
+                        <h2 class="step-title">Xác Nhận Đơn Hàng</h2>
+
+                        <div class="review-grid">
+                            <!-- ORDER ITEMS -->
+                            <div class="review-section review-items">
+                                <h3>Chi Tiết Đơn Hàng</h3>
+                                <div id="review-cart-items"></div>
+                            </div>
+
+                            <!-- CUSTOMER INFO SUMMARY -->
+                            <div class="review-section review-info">
+                                <h3>Thông Tin Giao Hàng</h3>
+                                <div id="review-customer-info"></div>
+                            </div>
+
+                            <!-- PAYMENT METHOD SUMMARY -->
+                            <div class="review-section review-payment">
+                                <h3>Phương Thức Thanh Toán</h3>
+                                <div id="review-payment-method"></div>
+                            </div>
+
+                            <!-- ORDER SUMMARY -->
+                            <div class="review-section review-summary">
+                                <h3>Tổng Cộng</h3>
+                                <div id="review-summary"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="goToStep(2)">Quay Lại</button>
+                            <button type="button" class="btn-primary btn-submit" onclick="completeCheckout()">Xác Nhận & Thanh Toán</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="section-container">
+                <div class="footer-logo">ZORENB</div>
+                <p>&copy; 2024 ZORENB Luxury Showroom.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/checkout.js"></script>
+</body>
+
+</html>
