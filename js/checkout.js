@@ -84,9 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // Setup province change listener to update cities datalist
 function setupProvinceListener() {
     const provinceInput = document.getElementById('province');
+    console.log('setupProvinceListener called, provinceInput:', provinceInput);
     if (provinceInput) {
         provinceInput.addEventListener('change', updateCitiesList);
         provinceInput.addEventListener('blur', updateCitiesList);
+        console.log('✓ Province listener setup complete');
     }
 }
 
@@ -95,6 +97,10 @@ function updateCitiesList() {
     const provinceInput = document.getElementById('province');
     const selectedProvince = provinceInput.value.trim();
     const citiesList = document.getElementById('cities-list');
+
+    console.log('updateCitiesList called');
+    console.log('selectedProvince:', selectedProvince);
+    console.log('Available cities:', vietnamCitiesByProvince[selectedProvince]);
 
     // Clear old options
     citiesList.innerHTML = '';
@@ -105,7 +111,11 @@ function updateCitiesList() {
             const option = document.createElement('option');
             option.value = city;
             citiesList.appendChild(option);
+            console.log('Added city:', city);
         });
+        console.log('✓ Cities list updated:', vietnamCitiesByProvince[selectedProvince].length, 'cities');
+    } else {
+        console.warn('⚠️ Province not found in vietnamCitiesByProvince:', selectedProvince);
     }
 }
 
