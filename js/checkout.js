@@ -81,23 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupProvinceListener();
 });
 
-// Clear province input function
-window.clearProvinceInput = (event) => {
-    event.preventDefault();
-    const provinceInput = document.getElementById('province');
-    const cityInput = document.getElementById('city');
-
-    provinceInput.value = '';
-    cityInput.value = '';
-
-    updateCitiesList();
-
-    console.log('✓ Province and city inputs cleared');
-
-    // Focus back to province input for convenience
-    provinceInput.focus();
-};
-
 // Setup province change listener to update cities datalist
 function setupProvinceListener() {
     const provinceInput = document.getElementById('province');
@@ -129,11 +112,12 @@ function setupProvinceListener() {
             updateCitiesList();
         });
 
-        // Allow user to clear and re-select province
+        // Select all text and clear city when focus to allow easy change
         provinceInput.addEventListener('focus', () => {
-            console.log('Province focus event');
-            // Don't clear value on focus, just log it
-            // User can select all (Ctrl+A) and replace with new value
+            console.log('Province focus event - selecting all');
+            provinceInput.select();
+            // Clear city when province is focused for re-selection
+            if (cityInput) cityInput.value = '';
         });
 
         console.log('✓ All province listeners attached');
