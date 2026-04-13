@@ -62,6 +62,7 @@ function validateStep1() {
         email: { label: 'Email', input: document.getElementById('email') },
         phone: { label: 'Số điện thoại', input: document.getElementById('phone') },
         address: { label: 'Địa chỉ', input: document.getElementById('address') },
+        province: { label: 'Tỉnh/Thành phố', input: document.getElementById('province') },
         city: { label: 'Thành phố', input: document.getElementById('city') }
     };
 
@@ -171,10 +172,9 @@ function saveCustomerInfo() {
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
         address: document.getElementById('address').value,
+        province: document.getElementById('province').value,
         city: document.getElementById('city').value,
-        zipcode: document.getElementById('zipcode').value,
-        notes: document.getElementById('notes').value,
-        deliveryDate: document.getElementById('delivery-date').value
+        notes: document.getElementById('notes').value
     };
     sessionStorage.setItem('checkoutData', JSON.stringify(checkoutData));
 }
@@ -277,6 +277,9 @@ function renderCustomerInfo() {
         </div>
         <div class="review-info-row">
             <span class="review-info-label">Địa Chỉ:</span> ${info.address || '—'}
+        </div>
+        <div class="review-info-row">
+            <span class="review-info-label">Tỉnh/Thành Phố:</span> ${info.province || '—'}
         </div>
         <div class="review-info-row">
             <span class="review-info-label">Thành Phố:</span> ${info.city || '—'}
