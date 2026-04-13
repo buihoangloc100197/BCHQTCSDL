@@ -112,6 +112,13 @@ function setupProvinceListener() {
             updateCitiesList();
         });
 
+        // Allow user to clear and re-select province
+        provinceInput.addEventListener('focus', () => {
+            console.log('Province focus event');
+            // Don't clear value on focus, just log it
+            // User can select all (Ctrl+A) and replace with new value
+        });
+
         console.log('✓ All province listeners attached');
     }
 }
