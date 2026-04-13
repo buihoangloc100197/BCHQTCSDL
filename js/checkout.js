@@ -122,6 +122,16 @@ function setupProvinceListener() {
 
         console.log('✓ All province listeners attached');
     }
+
+    // Setup city field listeners for re-selection
+    if (cityInput) {
+        cityInput.addEventListener('focus', () => {
+            console.log('City focus event - clearing for new selection');
+            cityInput.value = '';
+        });
+
+        console.log('✓ City listeners attached');
+    }
 }
 
 // Update cities datalist based on selected province
