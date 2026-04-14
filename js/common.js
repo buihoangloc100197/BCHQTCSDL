@@ -13,7 +13,10 @@ function updateCartBadge() {
     console.log('✓ Cart badge updated:', cart.length);
 }
 
-// Update cart badge when page loads
+// Call immediately when script loads
+updateCartBadge();
+
+// Update cart badge when page loads (in case this script loads after DOM is ready)
 document.addEventListener('DOMContentLoaded', updateCartBadge);
 
 // Listen for storage changes from other tabs
