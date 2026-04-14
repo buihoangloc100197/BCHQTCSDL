@@ -33,8 +33,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <button class="cart-icon-btn" id="header-cart-btn" onclick="window.location.href='../cart.html'"
-                    aria-label="Giỏ hàng">
+                <a href="../cart.html" class="cart-icon-btn" id="header-cart-link" aria-label="Giỏ hàng">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" stroke-linejoin="round">
                         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
@@ -42,13 +41,13 @@
                         <path d="M16 10a4 4 0 01-8 0"></path>
                     </svg>
                     <span class="cart-badge" id="cart-count">0</span>
-                </button>
+                </a>
                 <a href="#" class="btn-auth login-link">Đăng Nhập</a>
                 <a href="#" class="btn-auth register-btn">Đăng Ký</a>
             </div>
             <button class="hamburger" id="hamburger-btn" aria-label="Menu">
                 <span></span><span></span><span></span>
-            </button>
+            </a>
         </header>
 
         <!-- BREADCRUMB -->
@@ -123,9 +122,9 @@
                 <div class="pd-qty-section">
                     <span class="pd-section-label">Số lượng</span>
                     <div class="pd-qty-control">
-                        <button class="pd-qty-btn" id="qty-minus">−</button>
+                        <button class="pd-qty-btn" id="qty-minus">−</a>
                         <span class="pd-qty-value" id="qty-value">1</span>
-                        <button class="pd-qty-btn" id="qty-plus">+</button>
+                        <button class="pd-qty-btn" id="qty-plus">+</a>
                     </div>
                 </div>
 
@@ -139,7 +138,7 @@
                             <path d="M16 10a4 4 0 01-8 0" />
                         </svg>
                         Thêm Vào Giỏ
-                    </button>
+                    </a>
                     <button class="pd-btn-buy" id="btn-buy-now">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -147,14 +146,14 @@
                             <path d="M6 12h12" />
                         </svg>
                         Đặt Mua Ngay
-                    </button>
+                    </a>
                     <button class="pd-btn-wish" id="btn-wishlist" aria-label="Yêu thích">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.8">
                             <path
                                 d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Cam kết -->
@@ -192,9 +191,9 @@
         <section class="pd-details-full reveal">
             <div class="pd-details-container">
                 <div class="pd-tabs">
-                    <button class="pd-tab active" data-tab="desc">Mô Tả Sản Phẩm</button>
-                    <button class="pd-tab" data-tab="material">Chất Liệu & Chăm Sóc</button>
-                    <button class="pd-tab" data-tab="designer">Nhà Thiết Kế</button>
+                    <button class="pd-tab active" data-tab="desc">Mô Tả Sản Phẩm</a>
+                    <button class="pd-tab" data-tab="material">Chất Liệu & Chăm Sóc</a>
+                    <button class="pd-tab" data-tab="designer">Nhà Thiết Kế</a>
                 </div>
                 <div class="pd-tab-content active" id="tab-desc"></div>
                 <div class="pd-tab-content" id="tab-material"></div>
@@ -224,8 +223,8 @@
                 <span class="pd-modal-close" id="close-size-guide">&times;</span>
                 <h2 class="pd-modal-title">Bảng Quy Đổi Kích Cỡ</h2>
                 <div class="pd-modal-tabs">
-                    <button class="pd-modal-tab active" data-target="men-size">Nam Giới</button>
-                    <button class="pd-modal-tab" data-target="women-size">Nữ Giới</button>
+                    <button class="pd-modal-tab active" data-target="men-size">Nam Giới</a>
+                    <button class="pd-modal-tab" data-target="women-size">Nữ Giới</a>
                 </div>
 
                 <div id="men-size" class="pd-size-table-container active">
