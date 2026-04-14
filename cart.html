@@ -239,6 +239,9 @@
     <script>
         function renderCart() {
             const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+            console.log('=== renderCart called ===');
+            console.log('Cart data:', cart);
+            console.log('Cart length:', cart.length);
             const container = document.getElementById('cart-content');
 
             if (cart.length === 0) {

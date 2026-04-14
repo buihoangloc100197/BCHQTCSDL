@@ -638,8 +638,11 @@
                 };
 
                 let cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+                console.log('Before add - cart:', cart);
                 cart.push(cartItem);
+                console.log('After add - cart:', cart);
                 localStorage.setItem('ZorenbCart', JSON.stringify(cart));
+                console.log('Saved to localStorage:', localStorage.getItem('ZorenbCart'));
 
                 updateHeaderCartCount();
                 alert(`Đã thêm ${cartItem.name} vào giỏ hàng!`);

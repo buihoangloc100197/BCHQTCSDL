@@ -1,6 +1,9 @@
 // Update cart badge on all pages
 function updateCartBadge() {
-    const cart = JSON.parse(localStorage.getItem('ZorenbCart')) || [];
+    const cartData = localStorage.getItem('ZorenbCart');
+    console.log('🛒 Cart localStorage data:', cartData);
+    const cart = JSON.parse(cartData) || [];
+    console.log('🛒 Parsed cart array:', cart);
     const cartBadges = document.querySelectorAll('#cart-count');
 
     cartBadges.forEach(badge => {
